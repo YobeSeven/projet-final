@@ -1,0 +1,9 @@
+@extends('layouts.index')
+@section('content-index')
+    @include('frontend.contents.services.header')
+    @include('frontend.contents.services.service-section')
+    @include('frontend.contents.services.features')
+    @include('frontend.contents.services.service-card')
+    @include('frontend.contents.newsletter')
+    @include('frontend.contents.contact-section')
+@endsection
