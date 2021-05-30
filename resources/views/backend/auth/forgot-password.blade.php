@@ -1,5 +1,5 @@
-@extends('layouts.index-admin')
-@section('content-admin')
+@extends('layouts.index-auth')
+@section('content-auth')
 @include('layouts.flash')
 <body class="bg-white font-family-karla h-screen">
     <div class="w-full flex flex-wrap">

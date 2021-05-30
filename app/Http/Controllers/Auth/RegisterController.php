@@ -32,7 +32,7 @@ class RegisterController extends Controller
         event(new Registered($user));
         // Mail::to($request->email)->send(new RegisterSender($request));
         Auth::login($user);
-        return redirect()->route("home")->with("success" , "Account created ! We sent you an email");
+        return redirect()->route("admin")->with("success" , "Account created ! We sent you an email");
     }
 
 }

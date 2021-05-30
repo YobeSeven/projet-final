@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AllAuthController extends Controller
@@ -21,5 +22,10 @@ class AllAuthController extends Controller
 
     public function ResetForgotPassword($token){
         return view('backend.auth.reset-forgot-password',["token" => $token]);
+    }
+
+    public function admin(User $users){
+        $users = User::all();
+        return view('backend.admin' , compact('users'));
     }
 }

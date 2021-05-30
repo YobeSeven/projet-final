@@ -8,4 +8,5 @@
     @include('frontend.contents.home.team')
     @include('frontend.contents.home.promotion')
     @include('frontend.contents.contact-section')
+    
 @endsection

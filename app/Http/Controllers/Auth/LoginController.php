@@ -23,7 +23,7 @@ class LoginController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 Auth::login($user);
                 $request->session()->regenerate();
-                return redirect()->route("home");
+                return redirect()->route("admin");
             } else {
                 return back()->with("fail" ,"wrong password");
             }
@@ -36,6 +36,6 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('home');    
+        return redirect()->route('login');    
     }
 }
