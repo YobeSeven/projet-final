@@ -4,6 +4,6 @@
     @include('frontend.contents.services.service-section')
     @include('frontend.contents.services.features')
     @include('frontend.contents.services.service-card')
-    @include('frontend.contents.newsletter')
-    @include('frontend.contents.contact-section')
+    @include('frontend.contents.partials.newsletter')
+    @include('frontend.contents.partials.contact-section')
 @endsection

@@ -7,6 +7,6 @@
     @include('frontend.contents.home.services')
     @include('frontend.contents.home.team')
     @include('frontend.contents.home.promotion')
-    @include('frontend.contents.contact-section')
+    @include('frontend.contents.partials.contact-section')
     
 @endsection
