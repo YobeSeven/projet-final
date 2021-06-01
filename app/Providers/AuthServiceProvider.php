@@ -28,5 +28,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin', function($online){
             return $online->role_id == 1 ;
         });
+
+        Gate::define('webmaster', function($online){
+            return $online->role_id == 1 || $online->role_id == 2 ;
+        });
+
+        Gate::define('admin', function($online){
+            return $online->role_id == 1 || $online->role_id == 2 || $online->role_id == 3 ;
+        });
     }
 }

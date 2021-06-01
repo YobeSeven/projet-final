@@ -17,7 +17,7 @@ class ContactController extends Controller
                 "subject" => ["required","string","max:255"],
                 "message" => ["required","string"]
             ]);
-            Mail::to("test@test.com")->send(new ContactSender($request));
+            Mail::to("pour.serveur.pro.1234@gmail.com")->send(new ContactSender($request));
             return redirect()->back();
         }
     }

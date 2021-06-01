@@ -62,3 +62,4 @@ Route::post('/store/reset/forgot/password',[ResetForgotPasswordController::class
 Route::post('/store/contact/mail',[ContactController::class , 'store'])->name('contact.store');
 Route::post('/store/newsletter',[NewsletterController::class , 'store'])->name('newsletter.store');
 Route::delete('/delete/{id}/user',[UserController::class , 'destroy'])->name('user.destroy');
+Route::put('/update/role/{id}/user',[UserController::class , 'updateRole'])->name('role.update');

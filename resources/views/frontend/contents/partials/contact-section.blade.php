@@ -21,14 +21,34 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" id="name" name="name" placeholder="Your name">
+                            @error('name')
+                            <span class="text-red-400">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror                
                         </div>
                         <div class="col-sm-6">
                             <input type="email" id="mail" name="mail" placeholder="Your email">
+                            @error('mail')
+                            <span class="text-red-400">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror                
                         </div>
                         <div class="col-sm-12">
                             <label class="hidden" for="subject"></label>
                             <input type="text" id="subject" name="subject" placeholder="Subject">
+                            @error('subject')
+                            <span class="text-red-400">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror                
                             <textarea id="message" name="message" placeholder="Message"></textarea>
+                            @error('message')
+                            <span class="text-red-400">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror                
                             <button type="submit" class="site-btn">send</button>
                         </div>
                     </div>

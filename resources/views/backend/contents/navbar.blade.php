@@ -39,4 +39,4 @@
         <i class="fas fa-sign-out-alt icone-sidebar"></i>
         <span class="text-sidebar">Logout</span>
     </a>
-</nav>    
+</nav>

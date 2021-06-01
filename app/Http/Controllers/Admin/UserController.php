@@ -13,4 +13,17 @@ class UserController extends Controller
         $id->delete();
         return redirect()->back();
     }
+
+    public function updateRole(User $id,Request $request){
+        if ($request->has('roleForUpdate')) {
+            
+            $request->validate([
+                "role_id" => ["required"]
+            ]);
+            $user = $id;
+            $user->role_id = $request->role_id;
+            $user->save();
+            return redirect()->back();
+        }
+    }
 }

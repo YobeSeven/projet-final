@@ -11,7 +11,12 @@
             <li><a href="{{route('services')}}">Services</a></li>
             <li><a href="{{route('blog')}}">Blog</a></li>
             <li><a href="{{route('contact')}}">Contact</a></li>
+            @guest                
+                <li><a href="{{route('login')}}">login</a></li>
+                <li><a href="{{route('register')}}">register</a></li>
+            @endguest
             @auth
+            <li><a href="{{route('logout')}}">admin</a></li>
             <li><a href="{{route('logout')}}">logout</a></li>
             @endauth
         </ul>

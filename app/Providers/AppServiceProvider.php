@@ -28,5 +28,13 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('Admin', function () {
             return Auth::user()->role_id == 1;
         });
+
+        Blade::if('Webmaster', function () {
+            return Auth::user()->role_id == 1 || Auth::user()->role_id == 2;
+        });
+
+        Blade::if('Redacteur', function () {
+            return Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3;
+        });
     }
 }
