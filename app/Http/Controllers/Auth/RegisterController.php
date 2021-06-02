@@ -18,13 +18,16 @@ class RegisterController extends Controller
     
         $request->validate([
             "name"      => "required|string|max:255",
+            "poste_id"  => "required|string",
             "email"     => "required|string|email|max:255|unique:users",
             "password"  => ["required", "confirmed", Rules\Password::min(8)],
         ]);
         
         $user = User::create([
             "name"      => $request->name,
+            "poste_id"  => $request->poste_id,
             "role_id"   =>  4,
+            "image"     => "profil_vide.jpg",
             "email"     => $request->email,
             "password"  => Hash::make($request->password),
         ]);

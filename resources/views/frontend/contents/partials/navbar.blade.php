@@ -16,7 +16,7 @@
                 <li><a href="{{route('register')}}">register</a></li>
             @endguest
             @auth
-            <li><a href="{{route('logout')}}">admin</a></li>
+            <li><a href="{{route('admin')}}">admin</a></li>
             <li><a href="{{route('logout')}}">logout</a></li>
             @endauth
         </ul>

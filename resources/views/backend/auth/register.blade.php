@@ -44,7 +44,21 @@
                         </span>
                         @enderror
                     </div>
-    
+
+                    <div class="flex flex-col pt-4">
+                        <select name="poste_id" id="poste_id">
+                            <option value="" selected disabled>Select poste</option>
+                            <option value="2">C.E.O</option>
+                            <option value="3">Entrepreneur</option>
+                            <option value="4">Web Developpeur</option>
+                        </select>
+                        @error('poste_id')
+                        <span class="text-red-400">
+                            <strong>{{$message}}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
                     <div class="flex flex-col pt-4">
                         <label for="password" class="text-lg">
                             Password
