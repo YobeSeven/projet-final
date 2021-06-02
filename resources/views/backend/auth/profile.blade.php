@@ -2,7 +2,7 @@
 @section('content-admin')
 @include('layouts.flash')
 <h1>Profile settings</h1>
-
+{{-- NAME AND EMAIL --}}
 <section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
     <h3 class="text-3xl font-semibold text-center text-gray-700">
         Change Name and E-mail
@@ -42,6 +42,7 @@
     </form>
 </section>
 
+{{-- CHANGE PASSWORD --}}
 <section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
     <h3 class="text-3xl font-semibold text-center text-gray-700">
         Change Password
@@ -92,6 +93,8 @@
         </button>
     </form>
 </section>
+
+{{-- CHANGE IMAGE --}}
 <section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
     <h3 class="text-3xl font-semibold text-center text-gray-700">
         Change Image
@@ -113,15 +116,37 @@
         </div>
         <button type="submit">Envoyer</button>
     </form>
+    <img src="{{asset('img/' . Auth::user()->image)}}" alt="">
+    <form action="{{route('setting-profile.imageDestroy')}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="hidden" name="deleteImage" id="deleteImage">
+        <button type="submit">Supprimer</button>
+
+    </form>
 </section>
 
+{{-- PUT DESCRIPTION --}}
+<section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
+    <h3 class="text-3xl font-semibold text-center text-gray-700">
+        PUT DESCRIPTION
+    </h3>
+    <form action="{{route('setting-profile.putDescription')}}" method="POST">
+        @csrf
+        <input type="hidden" name="addDescription">
+        <label for="texte">put description</label>
+        <textarea name="texte" id="texte" cols="30" rows="10"></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
 
+</section>
+{{-- DELETE ACCOUNT --}}
 <section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
     <h3 class="text-3xl font-semibold text-center text-gray-700">
         Delete Account
     </h3>
 
-    <form action="{{route('setting-profile.destroy')}}" method="POST">
+    <form action="{{route('setting-profile.destroyProfile')}}" method="POST">
         @csrf
         @method('DELETE')
         <input type="hidden" name="deleteProfile" id="deleteProfile">
@@ -143,5 +168,4 @@
         </button>
     </form>
 </section>
-
 @endsection

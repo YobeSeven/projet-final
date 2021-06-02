@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
-    
     @yield('content-auth')
     <script src={{asset('js/app.js')}}></script>
 </body>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetForgotPasswordController;
 use App\Http\Controllers\Auth\SettingProfileController;
 use App\Http\Controllers\Mail\ContactController;
 use App\Http\Controllers\Mail\NewsletterController;
+use Hamcrest\Core\Set;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,4 +72,6 @@ Route::put('/update/role/{id}/user',[UserController::class , 'updateRole'])->nam
 Route::put('update/profile',[SettingProfileController::class , 'updateProfile'])->name('setting-profile.updateProfile');
 Route::put('update/password',[SettingProfileController::class , 'updatePassword'])->name('setting-profile.updatePassword');
 Route::put('update/image',[SettingProfileController::class , 'updateImage'])->name('setting-profile.updateImage');
-Route::delete('delete/profile',[SettingProfileController::class , 'destroyProfile'])->name('setting-profile.destroy');
+Route::delete('delete/profile',[SettingProfileController::class , 'destroyProfile'])->name('setting-profile.destroyProfile');
+Route::delete('delete/image/profile',[SettingProfileController::class , 'destroyImage'])->name('setting-profile.imageDestroy');
+Route::post('user/description',[SettingProfileController::class , 'putDescription'])->name('setting-profile.putDescription');
