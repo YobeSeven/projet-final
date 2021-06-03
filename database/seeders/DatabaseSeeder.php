@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             PromotionSeeder::class,
             ContactSectionSeeder::class,
             HomeTitreSeeder::class,
+            CardServiceSeeder::class,
             UserSeeder::class,
         ]);
     }

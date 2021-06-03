@@ -3,10 +3,10 @@
     <div class="overlay"></div>
     <div class="container text-right">
         <div class="page-info">
-            <h2>Services</h2>
+            <h2>{{ucFirst($urlCurrent)}}</h2>
             <div class="page-links">
                 <a href="{{route('home')}}">Home</a>
-                <span>Services</span>
+                <span>{{ucFirst($urlCurrent)}}</span>
             </div>
         </div>
     </div>

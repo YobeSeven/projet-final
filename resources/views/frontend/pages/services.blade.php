@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('content-index')
-    @include('frontend.contents.services.header')
+    @include('frontend.contents.partials.header')
     @include('frontend.contents.services.service-section')
     @include('frontend.contents.services.features')
     @include('frontend.contents.services.service-card')
