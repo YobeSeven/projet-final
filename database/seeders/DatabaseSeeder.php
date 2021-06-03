@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\DeviceService;
+use App\Models\FeatureService;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +30,9 @@ class DatabaseSeeder extends Seeder
             ContactSectionSeeder::class,
             HomeTitreSeeder::class,
             CardServiceSeeder::class,
+            DeviceServiceSeeder::class,
+            FeatureServiceSeeder::class,
+            FooterSeeder::class,
             UserSeeder::class,
         ]);
     }

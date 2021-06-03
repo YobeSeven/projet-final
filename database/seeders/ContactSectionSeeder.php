@@ -23,6 +23,7 @@ class ContactSectionSeeder extends Seeder
                 "commune_contact"       =>  "05200 Arévalo",
                 "numero_contact"        =>  "0034 37483 2445 322",
                 "email"                 =>  "hello@company.com",
+                "created_at"            =>  now(),
             ],
         ]);
     }

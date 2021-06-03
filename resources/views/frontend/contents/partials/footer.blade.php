@@ -1,5 +1,7 @@
 	<!-- Footer section -->
 	<footer class="footer-section">
-		<h2>2017 All rights reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></h2>
+		@foreach ($footers as $item)
+			<h2>{{$item->texte}} <a href="{{$item->lien}}" target="_blank">{{$item->lien_texte}}</a></h2>			
+		@endforeach
 	</footer>
 	<!-- Footer section end -->

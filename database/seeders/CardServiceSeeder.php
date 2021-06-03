@@ -19,16 +19,19 @@ class CardServiceSeeder extends Seeder
                 "image_card"    =>  "card-1.jpg",
                 "titre_card"    =>  "Get in the lab",
                 "texte_card"    =>  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
+                "created_at"    =>  now(),
             ],
             [
                 "image_card"    =>  "card-2.jpg",
                 "titre_card"    =>  "Projects online",
                 "texte_card"    =>  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
+                "created_at"    =>  now(),
             ],
             [
                 "image_card"    =>  "card-3.jpg",
                 "titre_card"    =>  "SMART MARKETING",
                 "texte_card"    =>  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..",
+                "created_at"    =>  now(),
             ],
         ]);
     }
