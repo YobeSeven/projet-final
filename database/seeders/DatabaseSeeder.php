@@ -17,6 +17,16 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             PosteSeeder::class,
+            CarouselIntroSeeder::class,
+            IntroSeeder::class,
+            CardAboutSectionSeeder::class,
+            AboutSectionSeeder::class,
+            TestimonialSeeder::class,
+            ServiceSeeder::class,
+            TeamSeeder::class,
+            PromotionSeeder::class,
+            ContactSectionSeeder::class,
+            HomeTitreSeeder::class,
             UserSeeder::class,
         ]);
     }

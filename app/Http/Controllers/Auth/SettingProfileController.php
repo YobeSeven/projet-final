@@ -85,21 +85,19 @@ class SettingProfileController extends Controller
     //* FONCTION POUR SUPPRIMER L'IMAGE
     public function destroyImage(Request $request){
 
-        $userImage = Auth::user()->image;
-        
         if ($request->has('deleteImage')) {
-
-            if (!($userImage = "profil_vide.jpg")) {
-
+            $userImage = Auth::user()->image;
+            
+            if (($userImage === "profil_vide.jpg")) {
+                return redirect()->back();
+            } else {
                 Storage::disk('public')->delete('img/' . $userImage);
-
                 DB::table('users')->where("id" , Auth::user()->id)->update([
                     "image" => "profil_vide.jpg"
                 ]);
-
+                return redirect()->back();
             }
         }
-        return redirect()->back();
     }
 
     //* FONCTION POUR METTRE UNE DESCRIPTION

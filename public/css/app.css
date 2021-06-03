@@ -38055,7 +38055,7 @@ a.active, a:hover {
 }
 
 #btn-sidebar, #cancel {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
   color: #6321BF;
   border-radius: 5px;

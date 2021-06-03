@@ -5,7 +5,6 @@
     <p class="text-center">{{Auth::user()->email}}</p>
     <p class="text-center">{{Auth::user()->role->role_name}}</p>
     <a href="{{route('home')}}">home</a>
-    <a href="{{route('profile')}}">profile</a>
     <hr>
     @Webmaster
         <p class="text-center">Confirmation des nouveaux inscrits</p>

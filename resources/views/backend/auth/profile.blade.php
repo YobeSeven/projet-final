@@ -1,7 +1,7 @@
 @extends('layouts.index-admin')
 @section('content-admin')
 @include('layouts.flash')
-<h1>Profile settings</h1>
+<h1 class="text-center">Profile settings</h1>
 {{-- NAME AND EMAIL --}}
 <section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
     <h3 class="text-3xl font-semibold text-center text-gray-700">
@@ -140,6 +140,7 @@
     </form>
 
 </section>
+
 {{-- DELETE ACCOUNT --}}
 <section class="w-full mt-10 max-w-sm p-6 m-auto bg-gray-100 rounded-md shadow-md">
     <h3 class="text-3xl font-semibold text-center text-gray-700">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AllPagesController;
 use App\Http\Controllers\Auth\AllAuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -22,31 +23,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//& ROUTE FRONTEND
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/',[AllPagesController::class , 'home'])->name('home');
+Route::get('/services',[AllPagesController::class , 'service'])->name('services');
+Route::get('/contact',[AllPagesController::class , 'contact'])->name('contact');
+Route::get('/blog',[AllPagesController::class , 'blog'])->name('blog');
+Route::get('/blog/poste',[AllPagesController::class , 'blogPost'])->name('blog-post');
 
-Route::get('/services', function () {
-    return view('frontend.pages.services');
-})->name('services');
-
-Route::get('/contact', function () {
-    return view('frontend.pages.contact');
-})->name('contact');
-
-Route::get('/blog', function () {
-    return view('frontend.pages.blog');
-})->name('blog');
-
-Route::get('/blog/post', function () {
-    return view('frontend.pages.blog-post');
-})->name('blog-post');
-
+//& ROUTE APRES CONNEXION
 Route::middleware(['auth'])->group(function () {
     Route::get('/auth/admin',[AllAuthController::class , 'admin'])->name('admin');
     Route::get('/auth/profile',[AllAuthController::class , 'profile'])->name('profile');
 });
+
+//& ROUTE SEULEMENT POUR LES NON-CONNECTES
 Route::middleware(['guest'])->group(function () {
     
     Route::get('/login',[AllAuthController::class , 'login'])->name('login');
@@ -55,20 +46,20 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/reset/forgot/password/{token}',[AllAuthController::class , 'resetForgotPassword'])->name('reset-forgot-password');
 });
 
-
-
-
-// FUNCTION
+//& FUNCTION
+    //! AUTH
 Route::get('/store/login',[LoginController::class , 'store'])->name('login.store');
 Route::get('/logout/auth',[LoginController::class , 'logout'])->name('logout');
 Route::post('/store/auth',[RegisterController::class , 'store'])->name('register.store');
 Route::post('/store/forget/password',[ForgotPasswordController::class , 'store'])->name('forgot-password.store');
 Route::post('/store/reset/forgot/password',[ResetForgotPasswordController::class , 'store'])->name('reset-forgot-password.store');
+    //! MAIL
 Route::post('/store/contact/mail',[ContactController::class , 'store'])->name('contact.store');
 Route::post('/store/newsletter',[NewsletterController::class , 'store'])->name('newsletter.store');
+    //! ADMIN CONTROLL
 Route::delete('/delete/{id}/user',[UserController::class , 'destroy'])->name('user.destroy');
 Route::put('/update/role/{id}/user',[UserController::class , 'updateRole'])->name('role.update');
-
+    //! PROFILE
 Route::put('update/profile',[SettingProfileController::class , 'updateProfile'])->name('setting-profile.updateProfile');
 Route::put('update/password',[SettingProfileController::class , 'updatePassword'])->name('setting-profile.updatePassword');
 Route::put('update/image',[SettingProfileController::class , 'updateImage'])->name('setting-profile.updateImage');

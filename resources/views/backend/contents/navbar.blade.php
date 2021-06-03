@@ -7,9 +7,9 @@
     <header class="header-sidebar text-sidebar">
         <img class="mx-auto mt-2 mb-2" src="{{asset('img/logo.png')}}" alt="">
     </header>
-    <a href="#" class="active link-sidebar">
+    <a href="{{route('profile')}}" class="active link-sidebar">
         <i class="fas fa-qrcode icone-sidebar"></i>
-        <span class="text-sidebar">Dashboard</span>
+        <span class="text-sidebar">Profile</span>
     </a>
     <a class="link-sidebar" href="#">
         <i class="fas fa-link icone-sidebar"></i>

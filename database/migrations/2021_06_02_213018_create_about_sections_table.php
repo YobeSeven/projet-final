@@ -15,11 +15,10 @@ class CreateAboutSectionsTable extends Migration
     {
         Schema::create('about_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('titre_card');
-            $table->string('texte_card');
-            $table->string('titre_about');
-            $table->string('texte_about');
-            $table->string('link_yt');
+            $table->text('titre_section');
+            $table->text('texte_premier_section');
+            $table->text('texte_deuxieme_section');
+            $table->text('lien');
             $table->timestamps();
         });
     }
