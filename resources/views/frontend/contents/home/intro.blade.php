@@ -2,17 +2,17 @@
 <div class="hero-section">
     <div class="hero-content">
         <div class="hero-center">
-            @foreach ($intros as $item)
-                <img src="{{asset('img/' . $item->image_logo)}}" alt="">                
-                <p>{{$item->titre_logo}}</p>
-            @endforeach
+            <img src="img/big-logo.png" alt="">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, nihil?</p>
+            {{-- <p>{{$item->texte_carousel}}</p> --}}
         </div>
     </div>
     <!-- slider -->
     <div id="hero-slider" class="owl-carousel">
-        @foreach ($carouselIntros as $item)
-        <div class="item  hero-item" data-bg="{{$item->img_carousel}}"></div>
-        @endforeach
-    </div>
-</div>
-<!-- Intro Section -->
+            @foreach ($carouselIntros as $item)
+            <div class="item  hero-item" data-bg="{{$item->image_carousel}}"></div>
+			{{-- <div class="item  hero-item" data-bg="img/02.jpg"></div> --}}
+            @endforeach
+		</div>
+	</div>
+	<!-- Intro Section -->

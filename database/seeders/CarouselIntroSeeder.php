@@ -16,12 +16,14 @@ class CarouselIntroSeeder extends Seeder
     {
         DB::table('carousel_intros')->insert([
             [
-                "img_carousel"  =>  "img/01.jpg",
-                "created_at"    =>  now(),
+                "image_carousel"    =>  "img/01.jpg",
+                // "texte_carousel"    =>  "texte pour 1",
+                "created_at"        =>  now(),
             ],
             [
-                "img_carousel"  =>  "img/02.jpg",
-                "created_at"    =>  now(),
+                "image_carousel"    =>  "img/02.jpg",
+                // "texte_carousel"    =>  "texte pour 2",
+                "created_at"        =>  now(),
             ],
         ]);
     }

@@ -16,7 +16,6 @@ class CreateIntrosTable extends Migration
         Schema::create('intros', function (Blueprint $table) {
             $table->id();
             $table->string('image_logo');
-            $table->text('titre_logo');
             $table->timestamps();
         });
     }

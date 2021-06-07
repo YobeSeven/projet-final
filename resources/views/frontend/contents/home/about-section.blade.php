@@ -5,15 +5,15 @@
     <div class="card-section">
         <div class="container">
             <div class="row">
-                @foreach ($cardAboutSections as $item)
+                @foreach ($serviceRandomFor3 as $item)
                     <!-- single card -->
                     <div class="col-md-4 col-sm-6">
                         <div class="lab-card">
                             <div class="icon">
-                                <i class="{{$item->icone_card}}"></i>
+                                <i class="{{$item->icone}}"></i>
                             </div>
-                            <h2>{{$item->titre_card}}</h2>
-                            <p>{{$item->texte_card}}</p>
+                            <h2>{{$item->titre_service}}</h2>
+                            <p>{{$item->texte_service}}</p>
                         </div>
                     </div>                
                 @endforeach

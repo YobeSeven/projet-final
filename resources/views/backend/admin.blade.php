@@ -1,15 +1,19 @@
 @extends('layouts.index-admin')
 @section('content-admin')
     <hr>
-    <p class="text-center">{{Auth::user()->name}}</p>
-    <p class="text-center">{{Auth::user()->email}}</p>
-    <p class="text-center">{{Auth::user()->role->role_name}}</p>
-    <a href="{{route('home')}}">home</a>
+    <div class="text-center">
+        <p class="text-center">{{Auth::user()->name}}</p>
+        <p class="text-center">{{Auth::user()->email}}</p>
+        <p class="text-center">{{Auth::user()->role->role_name}}</p>
+        <a href="{{route('footer.index')}}">Footer components</a>
+        <a href="{{route('home')}}">Home</a>
+        <a href="{{route('intro.index')}}">Intro</a>
+    </div>
     <hr>
     @Webmaster
         <p class="text-center">Confirmation des nouveaux inscrits</p>
-        <table class="table table-bordered table-striped container text-center">
-            <thead class="thead-black">
+        <table class="container text-center">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>name</th>
@@ -61,8 +65,8 @@
     @endWebmaster
     @Webmaster
         <p class="text-center">Changement des rôles</p>
-        <table class="table table-bordered table-striped container text-center">
-            <thead class="thead-black">
+        <table class="container text-center">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>name</th>

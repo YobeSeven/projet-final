@@ -24,7 +24,7 @@ class TeamSeeder extends Seeder
             [
                 "image_member"  =>  "2.jpg",
                 "name_member"   =>  "AYOUB Williams",
-                "job_member"    =>  "Junior developer",
+                "job_member"    =>  "C.E.O",
                 "created_at"    =>  now(),
             ],
             [

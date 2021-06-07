@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
+    //* LOGIN USER
     public function store(Request $request){
         $request->validate([
             "email"     => "required|string|email|max:255",
@@ -32,6 +33,7 @@ class LoginController extends Controller
         }
     }
     
+    //* LOGOUT USER
     public function logout(Request $request){
         Auth::guard('web')->logout();
         $request->session()->invalidate();

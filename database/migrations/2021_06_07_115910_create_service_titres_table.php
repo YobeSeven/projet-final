@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarouselIntrosTable extends Migration
+class CreateServiceTitresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCarouselIntrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('carousel_intros', function (Blueprint $table) {
+        Schema::create('service_titres', function (Blueprint $table) {
             $table->id();
-            $table->string('img_carousel');
+            $table->text('feature');
+            $table->text('section');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCarouselIntrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carousel_intros');
+        Schema::dropIfExists('service_titres');
     }
 }

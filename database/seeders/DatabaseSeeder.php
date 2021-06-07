@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\DeviceService;
 use App\Models\FeatureService;
+use App\Models\TexteCarouselIntro;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             PosteSeeder::class,
-            CarouselIntroSeeder::class,
             IntroSeeder::class,
             CardAboutSectionSeeder::class,
             AboutSectionSeeder::class,
@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             DeviceServiceSeeder::class,
             FeatureServiceSeeder::class,
             FooterSeeder::class,
+            CarouselIntroSeeder::class,
+            ServiceTitreSeeder::class,
             UserSeeder::class,
         ]);
     }

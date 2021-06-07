@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class IntroSeeder extends Seeder
+class ServiceTitreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,10 @@ class IntroSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('intros')->insert([
+        DB::table('service_titres')->insert([
             [
-                "image_logo"    =>   "big-logo.png",
+                "feature"       =>  "Get in the Lab and see the services",
+                "section"       =>  "Get in the Lab and discover the world",
                 "created_at"    =>  now(),
             ],
         ]);

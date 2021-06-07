@@ -8,8 +8,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetForgotPasswordController;
 use App\Http\Controllers\Auth\SettingProfileController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Mail\ContactController;
 use App\Http\Controllers\Mail\NewsletterController;
+use App\Http\Controllers\Partials\FooterController;
 use Hamcrest\Core\Set;
 use Illuminate\Support\Facades\Route;
 
@@ -33,13 +35,18 @@ Route::get('/blog/poste',[AllPagesController::class , 'blogPost'])->name('blog-p
 
 //& ROUTE APRES CONNEXION
 Route::middleware(['auth'])->group(function () {
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/home',[HomeController::class , 'home'])->name('home.index');
+        Route::get('/admin/home/intro',[HomeController::class , 'intro'])->name('intro.index');
+        Route::get('/change/footer',[FooterController::class , 'index'])->name('footer.index');
+        Route::get('/edit/{id}/footer',[FooterController::class , 'edit'])->name('footer.edit');
+    });
     Route::get('/auth/admin',[AllAuthController::class , 'admin'])->name('admin');
     Route::get('/auth/profile',[AllAuthController::class , 'profile'])->name('profile');
 });
 
 //& ROUTE SEULEMENT POUR LES NON-CONNECTES
 Route::middleware(['guest'])->group(function () {
-    
     Route::get('/login',[AllAuthController::class , 'login'])->name('login');
     Route::get('/register',[AllAuthController::class , 'register'])->name('register');
     Route::get('/forgot/password',[AllAuthController::class , 'forgotPassword'])->name('forgot-password');
@@ -66,3 +73,5 @@ Route::put('update/image',[SettingProfileController::class , 'updateImage'])->na
 Route::delete('delete/profile',[SettingProfileController::class , 'destroyProfile'])->name('setting-profile.destroyProfile');
 Route::delete('delete/image/profile',[SettingProfileController::class , 'destroyImage'])->name('setting-profile.imageDestroy');
 Route::post('user/description',[SettingProfileController::class , 'putDescription'])->name('setting-profile.putDescription');
+    //! FOOTER COMPONENTS
+Route::put('update/{id}/footer',[FooterController::class , 'update'])->name('footer.update');

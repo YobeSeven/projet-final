@@ -8,7 +8,27 @@
 			@endforeach
 		</div>
 		<div class="row">
-			@foreach ($teams as $item)
+			@foreach ($teamRandom1s as $item)
+				<!-- single member -->
+				<div class="col-sm-4">
+					<div class="member">
+						<img src="{{asset('img/team/' . $item->image_member)}}" alt="">
+						<h2>{{$item->name_member}}</h2>
+						<h3>{{$item->job_member}}</h3>
+					</div>
+				</div>				
+			@endforeach
+			@foreach ($ceos as $item)
+				<!-- single member -->
+				<div class="col-sm-4">
+					<div class="member">
+						<img src="{{asset('img/team/' . $item->image_member)}}" alt="">
+						<h2>{{$item->name_member}}</h2>
+						<h3>{{$item->job_member}}</h3>
+					</div>
+				</div>				
+			@endforeach
+			@foreach ($teamRandom2s as $item)
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">

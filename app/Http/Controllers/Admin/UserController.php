@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    //* DELETE NEW USER
     public function destroy(User $id){
         $this->authorize('admin');
         $id->delete();
         return redirect()->back();
     }
 
+    //* UPDATE ROLE OF USER
     public function updateRole(User $id,Request $request){
         if ($request->has('roleForUpdate')) {
             

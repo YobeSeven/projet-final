@@ -7,7 +7,7 @@
             @endforeach
         </div>
         <div class="row">
-            @foreach ($services as $item)
+            @foreach ($serviceRandomFor9 as $item)
                 <!-- single service -->
                 <div class="col-md-4 col-sm-6">
                     <div class="service">

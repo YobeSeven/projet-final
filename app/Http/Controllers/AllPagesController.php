@@ -14,6 +14,7 @@ use App\Models\HomeTitre;
 use App\Models\Intro;
 use App\Models\Promotion;
 use App\Models\Service;
+use App\Models\ServiceTitre;
 use App\Models\Team;
 use App\Models\Testimonial;
 use Illuminate\Support\Str;
@@ -22,30 +23,37 @@ use Illuminate\Http\Request;
 class AllPagesController extends Controller
 {
     public function home(){
-        $aboutSections = AboutSection::all();
-        $cardAboutSections = CardAboutSection::all();
         $intros = Intro::all();
         $carouselIntros = CarouselIntro::all();
+        $aboutSections = AboutSection::all();
+        $cardAboutSections = CardAboutSection::all();
         $testimonials = Testimonial::all();
-        $services = Service::all();
-        $teams = Team::all();
+        $serviceRandomFor3 = Service::inRandomOrder()->limit(3)->get();
+        $serviceRandomFor9 = Service::inRandomOrder()->limit(9)->get();
+        $teams = Team::where('job_member' ,'!=' , 'C.E.O')->get();
+        $teamRandom1s = $teams->random(1);
+        $teamRandom2s = $teams->random(1);
+        $ceos = Team::where('job_member' , '=' , 'C.E.O')->get();
         $promotions = Promotion::all();
         $contactSections = ContactSection::all();
         $homeTitres = HomeTitre::all();
         $footers = Footer::all();
-        return view('home' , compact('aboutSections' , 'cardAboutSections' , 'intros' , 'carouselIntros' , 'testimonials' , 'services' , 'teams' , 'promotions' , 'contactSections' , 'homeTitres' , 'footers'));
+        return view('home' , compact('aboutSections' , 'cardAboutSections' , 'intros' ,
+        'testimonials' , 'serviceRandomFor3' , 'serviceRandomFor9' , 'teamRandom1s' , 'teamRandom2s' ,
+        'ceos' , 'promotions' , 'contactSections' , 'homeTitres' , 'footers' , 'carouselIntros'));
     }
 
     public function service(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
         $services = Service::all();
-        $contactSections = ContactSection::all();
+        $featureRandomFor3 = FeatureService::inRandomOrder()->limit(3)->get();
         $cardServices = CardService::all();
-        $featureServices = FeatureService::all();
-        $deviceServices = DeviceService::all();
+        $contactSections = ContactSection::all();
+        $serviceTitres = ServiceTitre::all();
         $footers = Footer::all();
-        return view('frontend.pages.services' , compact('urlCurrent','services','contactSections','cardServices' ,'featureServices' , 'deviceServices' , 'footers'));
+        return view('frontend.pages.services' , compact('urlCurrent' , 'services' , 'serviceTitres' , 'featureRandomFor3' , 'contactSections' ,
+        'cardServices' , 'footers'));
     }
 
     public function contact(){
@@ -53,7 +61,7 @@ class AllPagesController extends Controller
         $urlCurrent = Str::afterLast($url, '/');
         $contactSections = ContactSection::all();
         $footers = Footer::all();
-        return view('frontend.pages.contact' , compact('urlCurrent','contactSections'));
+        return view('frontend.pages.contact' , compact('urlCurrent','contactSections' , 'footers'));
     }
 
     public function blog(){

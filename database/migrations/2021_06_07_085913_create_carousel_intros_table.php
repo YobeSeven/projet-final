@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFootersTable extends Migration
+class CreateCarouselIntrosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateFootersTable extends Migration
      */
     public function up()
     {
-        Schema::create('footers', function (Blueprint $table) {
+        Schema::create('carousel_intros', function (Blueprint $table) {
             $table->id();
-            $table->text('texte');
-            $table->string('lien');
-            $table->text('lien_texte');
+            $table->string('image_carousel');
+            // $table->text('texte_carousel');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateFootersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('footers');
+        Schema::dropIfExists('carousel_intros');
     }
 }
