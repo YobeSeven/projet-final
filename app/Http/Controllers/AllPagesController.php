@@ -51,9 +51,10 @@ class AllPagesController extends Controller
         $cardServices = CardService::all();
         $contactSections = ContactSection::all();
         $serviceTitres = ServiceTitre::all();
+        $deviceServices = DeviceService::all();
         $footers = Footer::all();
-        return view('frontend.pages.services' , compact('urlCurrent' , 'services' , 'serviceTitres' , 'featureRandomFor3' , 'contactSections' ,
-        'cardServices' , 'footers'));
+        return view('frontend.pages.services' , compact('urlCurrent' , 'services' , 'serviceTitres' ,
+        'featureRandomFor3' , 'contactSections' , 'cardServices' , 'deviceServices' , 'footers'));
     }
 
     public function contact(){

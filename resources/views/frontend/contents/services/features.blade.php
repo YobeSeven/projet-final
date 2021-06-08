@@ -25,7 +25,9 @@
             <!-- Devices -->
             <div class="col-md-4 col-sm-4 devices">
                 <div class="text-center">
-                    <img src="{{asset('img/device.png')}}" alt="">
+                    @foreach ($deviceServices as $item)
+                        <img src="{{asset('img/' . $item->image_device)}}" alt="">                        
+                    @endforeach
                 </div>
             </div>
             <!-- feature item -->
