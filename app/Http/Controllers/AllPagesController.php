@@ -17,6 +17,7 @@ use App\Models\Service;
 use App\Models\ServiceTitre;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -30,10 +31,10 @@ class AllPagesController extends Controller
         $testimonials = Testimonial::all();
         $serviceRandomFor3 = Service::inRandomOrder()->limit(3)->get();
         $serviceRandomFor9 = Service::inRandomOrder()->limit(9)->get();
-        $teams = Team::where('job_member' ,'!=' , 'C.E.O')->get();
+        $teams = User::where('poste_id' ,'!=' , 1)->get();
         $teamRandom1s = $teams->random(1);
         $teamRandom2s = $teams->random(1);
-        $ceos = Team::where('job_member' , '=' , 'C.E.O')->get();
+        $ceos = User::where('poste_id' , '=' , 1)->get();
         $promotions = Promotion::all();
         $contactSections = ContactSection::all();
         $homeTitres = HomeTitre::all();

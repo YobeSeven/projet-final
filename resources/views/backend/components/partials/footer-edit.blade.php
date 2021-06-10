@@ -13,7 +13,7 @@
         @csrf
         @method('PUT')
         <div>
-            <label class="mt-2 for="texte">Texte :</label>
+            <label class="mt-2" for="texte">Texte :</label>
             <input type="text" name="texte" id="texte" value="{{$footer->texte}}"
             class="w-full px-4 py-2 mt-2 border rounded-md">
             @error('email')

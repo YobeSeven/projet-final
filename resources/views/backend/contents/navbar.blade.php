@@ -11,18 +11,28 @@
         <i class="fas fa-qrcode icone-sidebar"></i>
         <span class="text-sidebar">Profile</span>
     </a>
-    <a class="link-sidebar" href="#">
-        <i class="fas fa-link icone-sidebar"></i>
-        <span class="text-sidebar">Shortcuts</span>
-    </a>
-    <a class="link-sidebar" href="#">
-        <i class="fas fa-stream icone-sidebar"></i>
-        <span class="text-sidebar">Overview</span>
-    </a>
-    <a class="link-sidebar" href="#">
-        <i class="fas fa-calendar icone-sidebar"></i>
-        <span class="text-sidebar">Events</span>
-    </a>
+    @Admin
+        <a class="link-sidebar" href="{{route('home.index')}}">
+            <i class="fas fa-link icone-sidebar"></i>
+            <span class="text-sidebar">Home Admin</span>
+        </a>
+        <a class="link-sidebar" href="{{route('aboutSection.index')}}">
+            <i class="fas fa-stream icone-sidebar"></i>
+            <span class="text-sidebar">About Section</span>
+        </a>
+        <a class="link-sidebar" href="{{route('testimonial.index')}}">
+            <i class="far fa-question-circle icone-sidebar"></i>
+            <span class="text-sidebar">Testimonal</span>
+        </a>
+        <a class="link-sidebar" href="{{route('promotion.index')}}">
+            <i class="far fa-question-circle icone-sidebar"></i>
+            <span class="text-sidebar">Promotion</span>
+        </a>
+        <a class="link-sidebar" href="{{route('footer.index')}}">
+            <i class="fas fa-calendar icone-sidebar"></i>
+            <span class="text-sidebar">Footer</span>
+        </a>
+    @endAdmin
     <a class="link-sidebar" href="#">
         <i class="far fa-question-circle icone-sidebar"></i>
         <span class="text-sidebar">About</span>

@@ -5,14 +5,14 @@
     <h3 class="text-3xl font-semibold text-center text-gray-700">
         Update About-Section
     </h3>
-    <form action="" method="POST">
+    <form action="{{route('promotion.update' , $promotion->id)}}" method="POST">
         @csrf
         @method('PUT')
         <div>
-            <label class="mt-2" for="">
+            <label class="mt-2" for="titre_promotion">
                 Titre
             </label>
-            <input id="" name="" type="text" value=""
+            <input id="titre_promotion" name="titre_promotion" type="text" value="{{$promotion->titre_promotion}}"
             class="w-full px-4 py-2 mt-2 border rounded-md">
             @error('')
             <span class="text-red-400">
@@ -21,23 +21,11 @@
             @enderror
         </div>
         <div>
-            <label class="mt-2" for="">
+            <label class="mt-2" for="texte_promotion">
                 Premier texte
             </label>
             <textarea cols="30" rows="10" class="w-full px-4 py-2 mt-2 border rounded-md" 
-            id="" name=""></textarea>
-        </div>
-        <div>
-            <label class="mt-2" for="">
-                youtube
-            </label>
-            <input id="" name="" type="url" pattern="https?://.*" value="" 
-            class="w-full px-4 py-2 mt-2 border rounded-md">
-            @error('')
-            <span class="text-red-400">
-                <strong>{{$message}}</strong>
-            </span>
-            @enderror
+            id="texte_promotion" name="texte_promotion">{{$promotion->texte_promotion}}</textarea>
         </div>
         <button type="submit"
         class="w-full px-4 py-2 mt-2 tracking-wide text-white bg-gray-700 rounded-md hover:bg-gray-600">
@@ -45,4 +33,5 @@
         </button>
     </form>
 </section>
+
 @endsection

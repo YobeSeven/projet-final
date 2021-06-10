@@ -16,11 +16,11 @@ class PosteSeeder extends Seeder
     {
         DB::table('postes')->insert([
             [
-                "poste_name"    => "Directeur",
+                "poste_name"    => "C.E.O",
                 "created_at"    =>  now(),
             ],
             [
-                "poste_name"    => "C.E.O",
+                "poste_name"    => "Moderateur",
                 "created_at"    =>  now(),
             ],
             [

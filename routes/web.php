@@ -8,7 +8,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetForgotPasswordController;
 use App\Http\Controllers\Auth\SettingProfileController;
+use App\Http\Controllers\Home\AboutSectionController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\PromotionController;
+use App\Http\Controllers\Home\TestimonialController;
 use App\Http\Controllers\Mail\ContactController;
 use App\Http\Controllers\Mail\NewsletterController;
 use App\Http\Controllers\Partials\FooterController;
@@ -37,7 +40,20 @@ Route::get('/blog/poste',[AllPagesController::class , 'blogPost'])->name('blog-p
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/admin/home',[HomeController::class , 'home'])->name('home.index');
+        
         Route::get('/admin/home/intro',[HomeController::class , 'intro'])->name('intro.index');
+
+        Route::get('/admin/home/aboutSection',[HomeController::class , 'aboutSection'])->name('aboutSection.index');
+        Route::get('/Admin/home/{id}/aboutSection',[AboutSectionController::class , 'edit'])->name('aboutSection.edit');
+
+        Route::get('/admin/home/testimonial',[HomeController::class , 'testimonial'])->name('testimonial.index');
+        Route::get('/admin/home/{id}/testimonial',[TestimonialController::class , 'edit'])->name('testimonial.edit');
+
+        Route::get('/admin/home/team',[HomeController::class , 'team'])->name('team.index');
+
+        Route::get('/admin/home/promotion',[HomeController::class , 'promotion'])->name('promotion.index');
+        Route::get('/admin/home/{id}/promotion',[PromotionController::class , 'edit'])->name('promotion.edit');
+
         Route::get('/change/footer',[FooterController::class , 'index'])->name('footer.index');
         Route::get('/edit/{id}/footer',[FooterController::class , 'edit'])->name('footer.edit');
     });
@@ -75,3 +91,10 @@ Route::delete('delete/image/profile',[SettingProfileController::class , 'destroy
 Route::post('user/description',[SettingProfileController::class , 'putDescription'])->name('setting-profile.putDescription');
     //! FOOTER COMPONENTS
 Route::put('update/{id}/footer',[FooterController::class , 'update'])->name('footer.update');
+    //! HOME COMPONENTS 
+        //^ AboutSection
+Route::put('update/{id}/aboutSection',[AboutSectionController::class , 'update'])->name('aboutSection.update');
+        //^ Testimonial
+Route::put('update/{id}/testimonial',[TestimonialController::class , 'update'])->name('testimonial.update');
+        //^ Promotion
+Route::put('update/{id}/promotion',[PromotionController::class , 'update'])->name('promotion.update');

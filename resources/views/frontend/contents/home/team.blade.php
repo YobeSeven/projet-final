@@ -12,9 +12,9 @@
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="{{asset('img/team/' . $item->image_member)}}" alt="">
-						<h2>{{$item->name_member}}</h2>
-						<h3>{{$item->job_member}}</h3>
+						<img src="{{asset('img/team/' . $item->image)}}" alt="">
+						<h2>{{$item->name}}</h2>
+						<h3>{{$item->poste->poste_name}}</h3>
 					</div>
 				</div>				
 			@endforeach
@@ -22,9 +22,9 @@
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="{{asset('img/team/' . $item->image_member)}}" alt="">
-						<h2>{{$item->name_member}}</h2>
-						<h3>{{$item->job_member}}</h3>
+						<img src="{{asset('img/team/' . $item->image)}}" alt="">
+						<h2>{{$item->name}}</h2>
+						<h3>{{$item->poste->poste_name}}</h3>
 					</div>
 				</div>				
 			@endforeach
@@ -32,9 +32,9 @@
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="{{asset('img/team/' . $item->image_member)}}" alt="">
-						<h2>{{$item->name_member}}</h2>
-						<h3>{{$item->job_member}}</h3>
+						<img src="{{asset('img/team/' . $item->image)}}" alt="">
+						<h2>{{$item->name}}</h2>
+						<h3>{{$item->poste->poste_name}}</h3>
 					</div>
 				</div>				
 			@endforeach

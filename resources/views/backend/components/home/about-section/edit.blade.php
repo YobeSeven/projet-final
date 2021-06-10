@@ -5,35 +5,42 @@
     <h3 class="text-3xl font-semibold text-center text-gray-700">
         Update About-Section
     </h3>
-    <form action="" method="POST">
+    <form action="{{route('aboutSection.update' , $aboutSection->id)}}" method="POST">
         @csrf
         @method('PUT')
         <div>
-            <label class="mt-2" for="">
+            <label class="mt-2" for="titre_section">
                 Titre
             </label>
-            <input id="" name="" type="text" value=""
+            <input id="titre_section" name="titre_section" type="text" value="{{$aboutSection->titre_section}}"
             class="w-full px-4 py-2 mt-2 border rounded-md">
-            @error('')
+            @error('titre_section')
             <span class="text-red-400">
                 <strong>{{$message}}</strong>
             </span>
             @enderror
         </div>
         <div>
-            <label class="mt-2" for="">
+            <label class="mt-2" for="texte_premier_section">
                 Premier texte
             </label>
             <textarea cols="30" rows="10" class="w-full px-4 py-2 mt-2 border rounded-md" 
-            id="" name=""></textarea>
+            id="texte_premier_section" name="texte_premier_section"></textarea>
         </div>
         <div>
-            <label class="mt-2" for="">
-                youtube
+            <label class="mt-2" for="texte_deuxieme_section">
+                Deuxieme texte
             </label>
-            <input id="" name="" type="url" pattern="https?://.*" value="" 
+            <textarea cols="30" rows="10" class="w-full px-4 py-2 mt-2 border rounded-md" 
+            id="texte_deuxieme_section" name="texte_deuxieme_section"></textarea>
+        </div>
+        <div>
+            <label class="mt-2" for="lien">
+                Lien youtube
+            </label>
+            <input id="lien" name="lien" type="url" pattern="https?://.*" value="{{$aboutSection->lien}}" 
             class="w-full px-4 py-2 mt-2 border rounded-md">
-            @error('')
+            @error('lien')
             <span class="text-red-400">
                 <strong>{{$message}}</strong>
             </span>
