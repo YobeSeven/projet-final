@@ -3,10 +3,33 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
+                @foreach ($articles as $item)
+                    
                 <!-- Post item -->
                 <div class="post-item">
                     <div class="post-thumbnail">
-                        <img src="{{asset('img/blog/blog-2.jpg')}}" alt="">
+                        <img src="{{asset('img/blog/' . $item->image)}}" alt="">
+                        <div class="post-date">
+                            <h2>03</h2>
+                            <h3>Nov 2017</h3>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title">{{$item->titre}}</h2>
+                        <div class="post-meta">
+                            <a href="">{{$item->categorie->nom_categorie}}</a>
+                            <a href="">{{$item->tag->nom_tag}}</a>
+                            <a href="">2 Comments</a>
+                        </div>
+                        <p>{{$item->article}}</p>
+                        <a href="{{route('blog-post' , $item->id)}}" class="read-more">Read More</a>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <!-- Post item -->
+                <div class="post-item">
+                    <div class="post-thumbnail">
+                        <img src="{{asset('img/blog/blog-1.jpg')}}" alt="">
                         <div class="post-date">
                             <h2>03</h2>
                             <h3>Nov 2017</h3>
@@ -26,26 +49,6 @@
                 <!-- Post item -->
                 <div class="post-item">
                     <div class="post-thumbnail">
-                        <img src="{{asset('img/blog/blog-1.jpg')}}" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">Just a simple blog post</h2>
-                        <div class="post-meta">
-                            <a href="">Loredana Papp</a>
-                            <a href="">Design, Inspiration</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
                         <img src="{{asset('img/blog/blog-3.jpg')}}" alt="">
                         <div class="post-date">
                             <h2>03</h2>
@@ -60,9 +63,9 @@
                             <a href="">2 Comments</a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-                        <a href="blog-post.html" class="read-more">Read More</a>
+                        <a href="{{route('blog-post')}}" class="read-more">Read More</a>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Pagination -->
                 <div class="page-pagination">
                     <a class="active" href="">01.</a>
@@ -93,18 +96,6 @@
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">
-                    <h2 class="widget-title">Instagram</h2>
-                    <ul class="instagram">
-                        <li><img src="{{asset('img/instagram/1.jpg')}}" alt=""></li>
-                        <li><img src="{{asset('img/instagram/2.jpg')}}" alt=""></li>
-                        <li><img src="{{asset('img/instagram/3.jpg')}}" alt=""></li>
-                        <li><img src="{{asset('img/instagram/4.jpg')}}" alt=""></li>
-                        <li><img src="{{asset('img/instagram/5.jpg')}}" alt=""></li>
-                        <li><img src="{{asset('img/instagram/6.jpg')}}" alt=""></li>
-                    </ul>
-                </div>
-                <!-- Single widget -->
-                <div class="widget-item">
                     <h2 class="widget-title">Tags</h2>
                     <ul class="tag">
                         <li><a href="">branding</a></li>
@@ -115,21 +106,6 @@
                         <li><a href="">web design</a></li>
                         <li><a href="">photography</a></li>
                     </ul>
-                </div>
-                <!-- Single widget -->
-                <div class="widget-item">
-                    <h2 class="widget-title">Quote</h2>
-                    <div class="quote">
-                        <span class="quotation">‘​‌‘​‌</span>
-                        <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
-                    </div>
-                </div>
-                <!-- Single widget -->
-                <div class="widget-item">
-                    <h2 class="widget-title">Add</h2>
-                    <div class="add">
-                        <a href=""><img src="{{asset('img/add.jpg')}}" alt=""></a>
-                    </div>
                 </div>
             </div>
         </div>

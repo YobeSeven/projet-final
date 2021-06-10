@@ -18,6 +18,7 @@ class NewsletterController extends Controller
             $newsletter = Newsletter::create([
                 "mail" => $request->mail,
             ]);
+            
             Mail::to("pour.serveur.pro.1234@gmail.com")->send(new NewsletterSender($request));
             return redirect()->back();
         }

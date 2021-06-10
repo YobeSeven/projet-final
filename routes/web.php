@@ -34,7 +34,7 @@ Route::get('/',[AllPagesController::class , 'home'])->name('home');
 Route::get('/services',[AllPagesController::class , 'service'])->name('services');
 Route::get('/contact',[AllPagesController::class , 'contact'])->name('contact');
 Route::get('/blog',[AllPagesController::class , 'blog'])->name('blog');
-Route::get('/blog/poste',[AllPagesController::class , 'blogPost'])->name('blog-post');
+Route::get('/blog/{id}/poste',[AllPagesController::class , 'blogPost'])->name('blog-post');
 
 //& ROUTE APRES CONNEXION
 Route::middleware(['auth'])->group(function () {

@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\DeviceService;
-use App\Models\FeatureService;
-use App\Models\TexteCarouselIntro;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,7 +32,10 @@ class DatabaseSeeder extends Seeder
             FooterSeeder::class,
             CarouselIntroSeeder::class,
             ServiceTitreSeeder::class,
+            TagSeeder::class,
+            CategorieSeeder::class,
             UserSeeder::class,
+            ArticleSeeder::class,
         ]);
     }
     

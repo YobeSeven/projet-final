@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutSection;
+use App\Models\Article;
 use App\Models\CardAboutSection;
 use App\Models\CardService;
 use App\Models\CarouselIntro;
@@ -69,14 +70,16 @@ class AllPagesController extends Controller
     public function blog(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
+        $articles = Article::all();
         $footers = Footer::all();
-        return view('frontend.pages.blog' , compact('urlCurrent' , 'footers'));
+        return view('frontend.pages.blog' , compact('urlCurrent' , 'articles' , 'footers'));
     }
 
-    public function blogPost(){
+    public function blogPost(Article $id){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
+        $article = $id;
         $footers = Footer::all();
-        return view('frontend.pages.blog-post' , compact('urlCurrent' , 'footers'));
+        return view('frontend.pages.blog-post' , compact('urlCurrent' , 'article' , 'footers'));
     }
 }
