@@ -15,6 +15,7 @@ class TestimonialController extends Controller
     }
 
     public function update(Testimonial $id , Request $request){
+        $this->authorize('admin');
         $request->validate([
             "texte_client"  =>  ["string"],
             // "image_client"  =>  ['image','mimes:jpeg,png,jpg,gif,svg','max:2048'],

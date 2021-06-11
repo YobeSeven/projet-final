@@ -22,8 +22,11 @@
 				</div>				
 			@endforeach
 		</div>
+		<div class="mt-3">
+			{{ $services->links('vendor/pagination/default') }}
+		</div>
 		<div class="text-center">
-			<a href="" class="site-btn">Browse</a>
+			<a href="" class="site-btn">Salut</a>
 		</div>
 	</div>
 </div>

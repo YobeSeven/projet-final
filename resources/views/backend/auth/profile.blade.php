@@ -117,6 +117,7 @@
         <button type="submit">Envoyer</button>
     </form>
     <img src="{{asset('img/' . Auth::user()->image)}}" alt="">
+    <img src="{{asset('img/team/' . Auth::user()->image)}}" alt="">
     <form action="{{route('setting-profile.imageDestroy')}}" method="POST">
         @csrf
         @method('DELETE')

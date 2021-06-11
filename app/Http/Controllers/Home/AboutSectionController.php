@@ -15,6 +15,7 @@ class AboutSectionController extends Controller
     }
 
     public function update(AboutSection $id , Request $request){
+        $this->authorize('admin');
         $request->validate([
             "titre_section"             =>  ["string" , "max:255"],
             "texte_premier_section"     =>  ["string"],

@@ -48,7 +48,7 @@ class AllPagesController extends Controller
     public function service(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
-        $services = Service::all();
+        $services = Service::paginate(6)->fragment('services');
         $featureRandomFor3 = FeatureService::inRandomOrder()->limit(3)->get();
         $cardServices = CardService::all();
         $contactSections = ContactSection::all();
@@ -70,7 +70,7 @@ class AllPagesController extends Controller
     public function blog(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
-        $articles = Article::orderBy('id' , 'desc')->pagination(3);
+        $articles = Article::paginate(3)->fragment("articles");
         $footers = Footer::all();
         return view('frontend.pages.blog' , compact('urlCurrent' , 'articles' , 'footers'));
     }

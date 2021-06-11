@@ -21,6 +21,7 @@ class BlogController extends Controller
     }
 
     public function update(Article $id , Request $request){
+        $this->authorize('webmaster');
         $request->validate([
             "titre"  =>  ['string','max:255'],
             "article"   =>  ['string'],
@@ -68,6 +69,7 @@ class BlogController extends Controller
     }
 
     public function store(Request $request){
+        $this->authorize('webmaster');
         $request->validate([
             "titre" =>  ['required' , 'string' , 'max:255'],
             "article" =>  ['required' , 'string' , 'max:255'],

@@ -73,6 +73,7 @@ class SettingProfileController extends Controller
             ]);
 
             $request->file('image')->storePublicly('img/' , 'public');
+
             
             Auth::user()->image = $request->file('image')->hashName();
 

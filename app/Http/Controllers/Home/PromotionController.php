@@ -14,6 +14,7 @@ class PromotionController extends Controller
     }
 
     public function update(Promotion $id , Request $request){
+        $this->authorize('admin');
         $request->validate([
             "titre_promotion"   =>  ["string" , "max:255"],
             "texte_promotion"   =>  ["string"]
