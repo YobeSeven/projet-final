@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AllPagesController;
 use App\Http\Controllers\Auth\AllAuthController;
@@ -54,8 +55,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/home/promotion',[HomeController::class , 'promotion'])->name('promotion.index');
         Route::get('/admin/home/{id}/promotion',[PromotionController::class , 'edit'])->name('promotion.edit');
 
+        
         Route::get('/change/footer',[FooterController::class , 'index'])->name('footer.index');
         Route::get('/edit/{id}/footer',[FooterController::class , 'edit'])->name('footer.edit');
+    });
+    
+    Route::middleware(['redacteur'])->group(function () {        
+        Route::get('/admin/article/blog',[BlogController::class , 'index'])->name('blog.index');
+        Route::get('/admin/create/article/blog',[BlogController::class , 'create'])->name('blog.create');
+        Route::get('/admin/edit/{id}/article/blog',[BlogController::class , 'edit'])->name('blog.edit');
     });
     Route::get('/auth/admin',[AllAuthController::class , 'admin'])->name('admin');
     Route::get('/auth/profile',[AllAuthController::class , 'profile'])->name('profile');
@@ -98,3 +106,6 @@ Route::put('update/{id}/aboutSection',[AboutSectionController::class , 'update']
 Route::put('update/{id}/testimonial',[TestimonialController::class , 'update'])->name('testimonial.update');
         //^ Promotion
 Route::put('update/{id}/promotion',[PromotionController::class , 'update'])->name('promotion.update');
+        //^ Blog for user
+Route::put('update/{id}/article',[BlogController::class , 'update'])->name('blog.update');
+Route::post('store/article/blog',[BlogController::class , 'store'])->name('blog.store');

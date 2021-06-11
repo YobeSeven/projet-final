@@ -33,10 +33,12 @@
             <span class="text-sidebar">Footer</span>
         </a>
     @endAdmin
-    <a class="link-sidebar" href="#">
-        <i class="far fa-question-circle icone-sidebar"></i>
-        <span class="text-sidebar">About</span>
-    </a>
+    @Webmaster
+        <a class="link-sidebar" href="{{route('blog.index')}}">
+            <i class="far fa-question-circle icone-sidebar"></i>
+            <span class="text-sidebar">Blog</span>
+        </a>    
+    @endWebmaster
     <a class="link-sidebar" href="#">
         <i class="fas fa-sliders-h icone-sidebar"></i>
         <span class="text-sidebar">Services</span>

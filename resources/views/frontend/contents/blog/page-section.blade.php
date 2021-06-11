@@ -26,6 +26,9 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="mt-5 page-pagination">
+                    {{ $arts->links('vendor/pagination/default') }}
+                </div>
                 {{-- <!-- Post item -->
                 <div class="post-item">
                     <div class="post-thumbnail">

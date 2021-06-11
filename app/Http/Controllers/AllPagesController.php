@@ -70,7 +70,7 @@ class AllPagesController extends Controller
     public function blog(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
-        $articles = Article::all();
+        $articles = Article::orderBy('id' , 'desc')->pagination(3);
         $footers = Footer::all();
         return view('frontend.pages.blog' , compact('urlCurrent' , 'articles' , 'footers'));
     }

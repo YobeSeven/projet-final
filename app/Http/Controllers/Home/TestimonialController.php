@@ -34,8 +34,13 @@ class TestimonialController extends Controller
                 ]);
             } else {
                 Storage::disk('public')->delete('img/avatar/' . $id->image_client);
+                $testimonial->update([
+                    "texte_client"  =>  $request->texte_client,
+                    "image_client"  =>  $request->file('image_client')->hashName(),
+                    "nom_client"    =>  $request->nom_client,
+                    "job_client"    =>  $request->job_client,
+                ]);
             }
-            
             return redirect()->route('testimonial.index');
         } else {
             $testimonial->update([
@@ -43,6 +48,7 @@ class TestimonialController extends Controller
                 "nom_client"    =>  $request->nom_client,
                 "job_client"    =>  $request->job_client,
             ]);
+            return redirect()->route('testimonial.index');
         };
     }
 }
