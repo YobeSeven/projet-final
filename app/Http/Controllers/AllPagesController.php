@@ -16,6 +16,7 @@ use App\Models\Intro;
 use App\Models\Promotion;
 use App\Models\Service;
 use App\Models\ServiceTitre;
+use App\Models\Subject;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\User;
@@ -39,10 +40,11 @@ class AllPagesController extends Controller
         $promotions = Promotion::all();
         $contactSections = ContactSection::all();
         $homeTitres = HomeTitre::all();
+        $subjects = Subject::all();
         $footers = Footer::all();
         return view('home' , compact('aboutSections' , 'cardAboutSections' , 'intros' ,
         'testimonials' , 'serviceRandomFor3' , 'serviceRandomFor9' , 'teamRandom1s' , 'teamRandom2s' ,
-        'ceos' , 'promotions' , 'contactSections' , 'homeTitres' , 'footers' , 'carouselIntros'));
+        'ceos' , 'promotions' , 'contactSections' , 'homeTitres' , 'footers' , 'subjects' , 'carouselIntros'));
     }
 
     public function service(){
@@ -54,17 +56,19 @@ class AllPagesController extends Controller
         $contactSections = ContactSection::all();
         $serviceTitres = ServiceTitre::all();
         $deviceServices = DeviceService::all();
+        $subjects = Subject::all();
         $footers = Footer::all();
         return view('frontend.pages.services' , compact('urlCurrent' , 'services' , 'serviceTitres' ,
-        'featureRandomFor3' , 'contactSections' , 'cardServices' , 'deviceServices' , 'footers'));
+        'featureRandomFor3' , 'contactSections' , 'cardServices' , 'deviceServices' , 'subjects' , 'footers' ));
     }
 
     public function contact(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
         $contactSections = ContactSection::all();
+        $subjects = Subject::all();
         $footers = Footer::all();
-        return view('frontend.pages.contact' , compact('urlCurrent','contactSections' , 'footers'));
+        return view('frontend.pages.contact' , compact('urlCurrent','contactSections' , 'subjects' , 'footers'));
     }
 
     public function blog(){

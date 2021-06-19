@@ -52,4 +52,33 @@ class TestimonialController extends Controller
             return redirect()->route('testimonial.index');
         };
     }
+
+    public function create(){
+        return view('backend.components.home.testimonial.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'texte_client'  =>  ['required' , 'string'],
+            'nom_client'    =>  ['required' , 'string'],
+            'image_client'  =>  ['image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'job_client'    =>  ['required' , 'string'],
+        ]);
+
+        $request->file('image_client')->storePublicly('img/avatar/' , 'public');
+
+        Testimonial::create([
+            'texte_client'  =>  $request->texte_client,
+            'nom_client'    =>  $request->nom_client,
+            'image_client'  =>  $request->file('image_client')->hashName(),
+            'job_client'    =>  $request->job_client,
+        ]);
+
+        return redirect()->route('testimonial.index');
+    }
+
+    public function destroy(Testimonial $id){
+        $id->delete();
+        return redirect()->back();
+    }
 }

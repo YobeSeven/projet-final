@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewArticleSender;
 use App\Models\Article;
+use App\Models\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -88,6 +91,17 @@ class BlogController extends Controller
         $article->tag_id        =   $request->tag_id;        
         $article->save();
 
+        $newletters = Newsletter::all();
+        foreach ($newletters as  $value) {
+            $mail = $value->mail;
+            Mail::to('pour.serveur.pro.1234@gmail.com')->send(new NewArticleSender($mail));
+        }
         return redirect()->route('blog.index');
+    }
+
+    public function destroy(Article $id){
+        $article = $id;
+        $article->delete();
+        return redirect()->back();
     }
 }

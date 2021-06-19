@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,14 +12,16 @@ class UserController extends Controller
     //* DELETE NEW USER
     public function destroy(User $id){
         $this->authorize('admin');
-        $id->delete();
+        $user = $id;
+        $article = $user->article;
+        $article->each->delete();
+        $user->delete();
         return redirect()->back();
     }
 
     //* UPDATE ROLE OF USER
     public function updateRole(User $id,Request $request){
         if ($request->has('roleForUpdate')) {
-            
             $request->validate([
                 "role_id" => ["required"]
             ]);

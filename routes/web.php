@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetForgotPasswordController;
 use App\Http\Controllers\Auth\SettingProfileController;
+use App\Http\Controllers\Contact\SubjectController;
 use App\Http\Controllers\Home\AboutSectionController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\PromotionController;
@@ -29,8 +30,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//& ROUTE FRONTEND
 
+//& ROUTE FRONTEND
 Route::get('/',[AllPagesController::class , 'home'])->name('home');
 Route::get('/services',[AllPagesController::class , 'service'])->name('services');
 Route::get('/contact',[AllPagesController::class , 'contact'])->name('contact');
@@ -49,12 +50,18 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/admin/home/testimonial',[HomeController::class , 'testimonial'])->name('testimonial.index');
         Route::get('/admin/home/{id}/testimonial',[TestimonialController::class , 'edit'])->name('testimonial.edit');
+        Route::get('/admin/home/testimonial/create',[TestimonialController::class , 'create'])->name('testimonial.create');
 
         Route::get('/admin/home/team',[HomeController::class , 'team'])->name('team.index');
 
         Route::get('/admin/home/promotion',[HomeController::class , 'promotion'])->name('promotion.index');
         Route::get('/admin/home/{id}/promotion',[PromotionController::class , 'edit'])->name('promotion.edit');
 
+        Route::get('/admin/partial/subject',[SubjectController::class , 'index'])->name('subject.index');
+        Route::get('/admin/partial/{id}/subject',[SubjectController::class , 'edit'])->name('subject.edit');
+        Route::get('/admin/partial/subject/create',[SubjectController::class , 'create'])->name('subject.create');
+
+        Route::get('/admin/partial/newsletter',[NewsletterController::class , 'index'])->name('newsletter.index');
         
         Route::get('/change/footer',[FooterController::class , 'index'])->name('footer.index');
         Route::get('/edit/{id}/footer',[FooterController::class , 'edit'])->name('footer.edit');
@@ -99,13 +106,22 @@ Route::delete('delete/image/profile',[SettingProfileController::class , 'destroy
 Route::post('user/description',[SettingProfileController::class , 'putDescription'])->name('setting-profile.putDescription');
     //! FOOTER COMPONENTS
 Route::put('update/{id}/footer',[FooterController::class , 'update'])->name('footer.update');
+    //! SUBJECT COMPONENTS
+Route::post('/store/subject',[SubjectController::class , 'store'])->name('subject.store');
+Route::put('/update/{id}/subject',[SubjectController::class , 'update'])->name('subject.update');
+Route::delete('/delete/{id}/subject',[SubjectController::class , 'destroy'])->name('subject.destroy');
+    //! NEWSLETTER COMPONENTS
+Route::delete('/delete/{id}/newsletter',[NewsletterController::class , 'destroy'])->name('newsletter.destroy');
     //! HOME COMPONENTS 
         //^ AboutSection
 Route::put('update/{id}/aboutSection',[AboutSectionController::class , 'update'])->name('aboutSection.update');
         //^ Testimonial
 Route::put('update/{id}/testimonial',[TestimonialController::class , 'update'])->name('testimonial.update');
+Route::post('store/testimonial',[TestimonialController::class , 'store'])->name('testimonial.store');
+Route::delete('delete/{id}/testimonial',[TestimonialController::class , 'destroy'])->name('testimonial.destroy');
         //^ Promotion
 Route::put('update/{id}/promotion',[PromotionController::class , 'update'])->name('promotion.update');
         //^ Blog for user
 Route::put('update/{id}/article',[BlogController::class , 'update'])->name('blog.update');
 Route::post('store/article/blog',[BlogController::class , 'store'])->name('blog.store');
+Route::delete('delete/{id}/article',[BlogController::class , 'destroy'])->name('blog.destroy');

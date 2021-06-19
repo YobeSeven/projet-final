@@ -9,6 +9,8 @@
                 <th>Image Client</th>
                 <th>Nom Client</th>
                 <th>Job Client</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +24,17 @@
                     <td>
                         <a href="{{route('testimonial.edit' , $item->id)}}">Modifier</a>
                     </td>
+                    <td>
+                        <form action="{{route('testimonial.destroy' , $item->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>                    
             @endforeach
         </tbody>
     </table>
+    <a href="{{route('testimonial.create')}}">Create</a>
 </section>
 @endsection

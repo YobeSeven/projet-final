@@ -10,6 +10,8 @@
                 <th>Texte</th>
                 <th>Categorie</th>
                 <th>Tag</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -25,13 +27,20 @@
                         <td>
                             <a href="{{route('blog.edit' , $item->id)}}">Modifier</a>
                         </td>
+                        <td>
+                            <form action="{{route('blog.destroy' , $item->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Supprimer</button>
+                            </form>
+                        </td>
                     </tr>
                 @endif
             @endforeach
-                </tbody>
-            </table>
-            <div class="text-center">
-                <a href="{{route('blog.create')}}">Create</a>
-            </div>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a href="{{route('blog.create')}}">Create</a>
+    </div>
 </section>
 @endsection

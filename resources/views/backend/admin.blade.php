@@ -1,6 +1,6 @@
 @extends('layouts.index-admin')
 @section('content-admin')
-    <hr>
+    {{-- <hr>
     <div class="text-center">
         <p class="text-center">{{Auth::user()->name}}</p>
         <p class="text-center">{{Auth::user()->email}}</p>
@@ -9,7 +9,8 @@
         <a href="{{route('home')}}">Home</a>
         <a href="{{route('intro.index')}}">Intro</a>
     </div>
-    <hr>
+    <hr> --}}
+    
     @Webmaster
         <p class="text-center">Confirmation des nouveaux inscrits</p>
         <table class="container text-center">

@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ServiceTitreSeeder::class,
             TagSeeder::class,
             CategorieSeeder::class,
+            SubjectSeeder::class,
             UserSeeder::class,
             ArticleSeeder::class,
         ]);

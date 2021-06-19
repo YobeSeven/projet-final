@@ -32,6 +32,14 @@
             <i class="fas fa-calendar icone-sidebar"></i>
             <span class="text-sidebar">Footer</span>
         </a>
+        <a class="link-sidebar" href="{{route('subject.index')}}">
+            <i class="far fa-envelope icone-sidebar"></i>
+            <span class="text-sidebar">Subject</span>
+        </a>
+        <a class="link-sidebar" href="{{route('newsletter.index')}}">
+            <i class="fas fa-sliders-h icone-sidebar"></i>
+            <span class="text-sidebar">Newsletter</span>
+        </a>    
     @endAdmin
     @Webmaster
         <a class="link-sidebar" href="{{route('blog.index')}}">
@@ -42,10 +50,6 @@
     <a class="link-sidebar" href="#">
         <i class="fas fa-sliders-h icone-sidebar"></i>
         <span class="text-sidebar">Services</span>
-    </a>
-    <a class="link-sidebar" href="#">
-        <i class="far fa-envelope icone-sidebar"></i>
-        <span class="text-sidebar">Contact</span>
     </a>
     <a class="link-sidebar" href="{{route('logout')}}">
         <i class="fas fa-sign-out-alt icone-sidebar"></i>
