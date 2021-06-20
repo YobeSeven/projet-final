@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CommentaireController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ValidateController;
 use App\Http\Controllers\AllPagesController;
 use App\Http\Controllers\Auth\AllAuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -66,6 +68,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/change/footer',[FooterController::class , 'index'])->name('footer.index');
         Route::get('/edit/{id}/footer',[FooterController::class , 'edit'])->name('footer.edit');
     });
+
+    Route::middleware(['webmaster'])->group(function () {
+        Route::get('/admin/validate/users',[ValidateController::class , 'index'])->name('validate.index');
+    });
     
     Route::middleware(['redacteur'])->group(function () {        
         Route::get('/admin/article/blog',[BlogController::class , 'index'])->name('blog.index');
@@ -98,12 +104,21 @@ Route::post('/store/newsletter',[NewsletterController::class , 'store'])->name('
 Route::delete('/delete/{id}/user',[UserController::class , 'destroy'])->name('user.destroy');
 Route::put('/update/role/{id}/user',[UserController::class , 'updateRole'])->name('role.update');
     //! PROFILE
-Route::put('update/profile',[SettingProfileController::class , 'updateProfile'])->name('setting-profile.updateProfile');
-Route::put('update/password',[SettingProfileController::class , 'updatePassword'])->name('setting-profile.updatePassword');
-Route::put('update/image',[SettingProfileController::class , 'updateImage'])->name('setting-profile.updateImage');
-Route::delete('delete/profile',[SettingProfileController::class , 'destroyProfile'])->name('setting-profile.destroyProfile');
-Route::delete('delete/image/profile',[SettingProfileController::class , 'destroyImage'])->name('setting-profile.imageDestroy');
-Route::post('user/description',[SettingProfileController::class , 'putDescription'])->name('setting-profile.putDescription');
+Route::put('/update/profile',[SettingProfileController::class , 'updateProfile'])->name('setting-profile.updateProfile');
+Route::put('/update/password',[SettingProfileController::class , 'updatePassword'])->name('setting-profile.updatePassword');
+Route::put('/update/image',[SettingProfileController::class , 'updateImage'])->name('setting-profile.updateImage');
+Route::delete('/delete/profile',[SettingProfileController::class , 'destroyProfile'])->name('setting-profile.destroyProfile');
+Route::delete('/delete/image/profile',[SettingProfileController::class , 'destroyImage'])->name('setting-profile.imageDestroy');
+Route::post('/user/description',[SettingProfileController::class , 'putDescription'])->name('setting-profile.putDescription');
+    //! VALIDATE ARTICLE
+Route::put('/update/validate/{id}/article',[ValidateController::class , 'validateArticle'])->name('validateArticle.update');
+Route::delete('/validate/non/{id}/article',[ValidateController::class , 'nonValidateArticle'])->name('nonValidateArticle.destroy');
+Route::delete('/delete/validate/{id}/article',[ValidateController::class , 'deleteArticle'])->name('deleteArticle.destroy');
+Route::put('/restore/delete/{id}/article',[ValidateController::class , 'restoreDeleteArticle'])->name('restoreDeleteArticle.update');
+    //! VALIDATE COMMENTAIRE
+Route::post('/poste/{id}/commentaire',[CommentaireController::class , 'store'])->name('commentaire.store');
+Route::put('/validate/{id}/commentaire',[CommentaireController::class , 'validateCommentaire'])->name('validateCommentaire.update');
+Route::delete('/validate/{id}/commentaire',[CommentaireController::class , 'nonValidateCommentaire'])->name('nonValidateCommentaire.destroy');
     //! FOOTER COMPONENTS
 Route::put('update/{id}/footer',[FooterController::class , 'update'])->name('footer.update');
     //! SUBJECT COMPONENTS
@@ -114,14 +129,14 @@ Route::delete('/delete/{id}/subject',[SubjectController::class , 'destroy'])->na
 Route::delete('/delete/{id}/newsletter',[NewsletterController::class , 'destroy'])->name('newsletter.destroy');
     //! HOME COMPONENTS 
         //^ AboutSection
-Route::put('update/{id}/aboutSection',[AboutSectionController::class , 'update'])->name('aboutSection.update');
+Route::put('/update/{id}/aboutSection',[AboutSectionController::class , 'update'])->name('aboutSection.update');
         //^ Testimonial
-Route::put('update/{id}/testimonial',[TestimonialController::class , 'update'])->name('testimonial.update');
-Route::post('store/testimonial',[TestimonialController::class , 'store'])->name('testimonial.store');
-Route::delete('delete/{id}/testimonial',[TestimonialController::class , 'destroy'])->name('testimonial.destroy');
+Route::put('/update/{id}/testimonial',[TestimonialController::class , 'update'])->name('testimonial.update');
+Route::post('/store/testimonial',[TestimonialController::class , 'store'])->name('testimonial.store');
+Route::delete('/delete/{id}/testimonial',[TestimonialController::class , 'destroy'])->name('testimonial.destroy');
         //^ Promotion
-Route::put('update/{id}/promotion',[PromotionController::class , 'update'])->name('promotion.update');
+Route::put('/update/{id}/promotion',[PromotionController::class , 'update'])->name('promotion.update');
         //^ Blog for user
-Route::put('update/{id}/article',[BlogController::class , 'update'])->name('blog.update');
-Route::post('store/article/blog',[BlogController::class , 'store'])->name('blog.store');
-Route::delete('delete/{id}/article',[BlogController::class , 'destroy'])->name('blog.destroy');
+Route::put('/update/{id}/article',[BlogController::class , 'update'])->name('blog.update');
+Route::post('/store/article/blog',[BlogController::class , 'store'])->name('blog.store');
+Route::put('/delete/{id}/article',[BlogController::class , 'destroy'])->name('blog.destroy');

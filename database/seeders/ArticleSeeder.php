@@ -18,6 +18,8 @@ class ArticleSeeder extends Seeder
             [
                 "user_id"   =>  1,
                 "titre"     =>  "Just a simple blog post",
+                "validate"  =>  1,
+                "trash"     =>  0,
                 "image"     =>  "blog-1.jpg",
                 "article"   =>  "lorem10",
                 "categorie_id"  =>  1,
@@ -27,6 +29,8 @@ class ArticleSeeder extends Seeder
             [
                 "user_id"   =>  3,
                 "titre"     =>  "Just a simple blog post",
+                "validate"  =>  1,
+                "trash"     =>  0,
                 "image"     =>  "blog-3.jpg",
                 "article"   =>  "lorem10",
                 "categorie_id"  =>  3,
@@ -36,6 +40,8 @@ class ArticleSeeder extends Seeder
             [
                 "user_id"   =>  2,
                 "titre"     =>  "Just a simple blog post",
+                "validate"  =>  1,
+                "trash"     =>  0,
                 "image"     =>  "blog-2.jpg",
                 "article"   =>  "lorem10",
                 "categorie_id"  =>  2,

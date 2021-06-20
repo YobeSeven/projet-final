@@ -16,25 +16,27 @@
         </thead>
         <tbody>
             @foreach ($articles as $item)
-                @if ($item->user->id == Auth::user()->id)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->titre}}</td>
-                        <td>{{$item->image}}</td>
-                        <td>{{$item->article}}</td>
-                        <td>{{$item->categorie->nom_categorie}}</td>
-                        <td>{{$item->tag->nom_tag}}</td>
-                        <td>
-                            <a href="{{route('blog.edit' , $item->id)}}">Modifier</a>
-                        </td>
-                        <td>
-                            <form action="{{route('blog.destroy' , $item->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
+                @if ($item->user->id == Auth::user()->id || Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
+                    @if ($item->trash === 0)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$item->titre}}</td>
+                            <td>{{$item->image}}</td>
+                            <td>{{$item->article}}</td>
+                            <td>{{$item->categorie->nom_categorie}}</td>
+                            <td>{{$item->tag->nom_tag}}</td>
+                            <td>
+                                <a href="{{route('blog.edit' , $item->id)}}">Modifier</a>
+                            </td>
+                            <td>
+                                <form action="{{route('blog.destroy' , $item->id)}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>                        
+                    @endif
                 @endif
             @endforeach
         </tbody>

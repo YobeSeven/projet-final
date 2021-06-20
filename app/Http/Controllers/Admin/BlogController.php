@@ -38,6 +38,8 @@ class BlogController extends Controller
                 $request->file('image')->storePublicly('img/blog/' , 'public');
                 $article->update([
                     "titre"         =>  $request->titre,
+                    "validate"      =>  1,
+                    "trash"         =>  0,
                     "article"       =>  $request->article,
                     "image"         =>  $request->file('image')->hashName(),
                     "categorie_id"  =>  $request->categorie_id,
@@ -49,6 +51,8 @@ class BlogController extends Controller
                 $request->file('image')->storePublicly('img/blog/' , 'public');
                 $article->update([
                     "titre"         =>  $request->titre,
+                    "validate"      =>  1,
+                    "trash"         =>  0,
                     "article"       =>  $request->article,
                     "image"         =>  $request->file('image')->hashName(),
                     "categorie_id"  =>  $request->categorie_id,
@@ -59,6 +63,8 @@ class BlogController extends Controller
         } else {
             $article->update([
                 "titre"         =>  $request->titre,
+                "validate"      =>  1,
+                "trash"         =>  0,
                 "article"       =>  $request->article,
                 "categorie_id"  =>  $request->categorie_id,
                 "tag_id"        =>  $request->tag_id,
@@ -85,6 +91,12 @@ class BlogController extends Controller
         $article = new Article();
         $article->user_id       =   $userId;
         $article->titre         =   $request->titre;
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            $article->validate = 1;
+        } else {
+            $article->validate = 0;
+        }
+        $article->trash = 0 ;
         $article->article       =   $request->article;
         $article->image         =   $request->file('image')->hashName();
         $article->categorie_id  =   $request->categorie_id;
@@ -96,12 +108,18 @@ class BlogController extends Controller
             $mail = $value->mail;
             Mail::to('pour.serveur.pro.1234@gmail.com')->send(new NewArticleSender($mail));
         }
-        return redirect()->route('blog.index');
+
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            return redirect()->route('blog.index')->with('sucess' , "votre article à été enregistré");
+        } else {
+            return redirect()->route('blog.index')->with('sucess' , "votre article est en cours d'enregistrement");
+        }
     }
 
     public function destroy(Article $id){
         $article = $id;
-        $article->delete();
+        $article->trash = 1;
+        $article->save();
         return redirect()->back();
     }
 }

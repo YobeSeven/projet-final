@@ -17,6 +17,8 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('titre');
+            $table->boolean('validate');
+            $table->boolean('trash');
             $table->string('image');
             $table->text('article');
             $table->foreignId('categorie_id')->constrained();

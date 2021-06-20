@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\CardAboutSection;
 use App\Models\CardService;
 use App\Models\CarouselIntro;
+use App\Models\Commentaire;
 use App\Models\ContactSection;
 use App\Models\DeviceService;
 use App\Models\FeatureService;
@@ -22,6 +23,7 @@ use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AllPagesController extends Controller
 {
@@ -52,6 +54,8 @@ class AllPagesController extends Controller
         $urlCurrent = Str::afterLast($url, '/');
         $services = Service::paginate(6)->fragment('services');
         $featureRandomFor3 = FeatureService::inRandomOrder()->limit(3)->get();
+        $articles = Article::all();
+        $lastArticles = Article::latest()->take(3)->get();
         $cardServices = CardService::all();
         $contactSections = ContactSection::all();
         $serviceTitres = ServiceTitre::all();
@@ -59,7 +63,7 @@ class AllPagesController extends Controller
         $subjects = Subject::all();
         $footers = Footer::all();
         return view('frontend.pages.services' , compact('urlCurrent' , 'services' , 'serviceTitres' ,
-        'featureRandomFor3' , 'contactSections' , 'cardServices' , 'deviceServices' , 'subjects' , 'footers' ));
+        'featureRandomFor3' , 'contactSections' , 'articles' , 'lastArticles' , 'cardServices' , 'deviceServices' , 'subjects' , 'footers' ));
     }
 
     public function contact(){
@@ -74,16 +78,18 @@ class AllPagesController extends Controller
     public function blog(){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
-        $articles = Article::paginate(3)->fragment("articles");
+        $lastArticles = Article::latest()->take(3)->get();
+        $articles = Article::paginate(3)->fragment("lastArticles");
         $footers = Footer::all();
-        return view('frontend.pages.blog' , compact('urlCurrent' , 'articles' , 'footers'));
+        return view('frontend.pages.blog' , compact('urlCurrent' , 'lastArticles' , 'articles' , 'footers'));
     }
 
     public function blogPost(Article $id){
         $url = url()->current();
         $urlCurrent = Str::afterLast($url, '/');
         $article = $id;
+        $commentaires = Commentaire::where('article_id', $article->id)->where('validate', 1)->get();
         $footers = Footer::all();
-        return view('frontend.pages.blog-post' , compact('urlCurrent' , 'article' , 'footers'));
+        return view('frontend.pages.blog-post' , compact('urlCurrent' , 'article' , 'commentaires' , 'footers'));
     }
 }

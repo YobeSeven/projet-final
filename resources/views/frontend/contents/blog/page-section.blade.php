@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
-                @foreach ($articles as $item)
+                @foreach ($lastArticles as $item)
                 <!-- Post item -->
                 <div class="post-item">
                     <div class="post-thumbnail">
@@ -52,7 +52,7 @@
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">
-                    <h2 class="widget-title">Tags</h2>
+                    <h2 class="widget-title">LOL</h2>
                     <ul class="tag">
                         <li><a href="">branding</a></li>
                         <li><a href="">identity</a></li>

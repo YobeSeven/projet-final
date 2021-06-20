@@ -46,11 +46,11 @@
             <i class="far fa-question-circle icone-sidebar"></i>
             <span class="text-sidebar">Blog</span>
         </a>    
+        <a class="link-sidebar" href="{{route('validate.index')}}">
+            <i class="fas fa-sliders-h icone-sidebar"></i>
+            <span class="text-sidebar">Validate</span>
+        </a>
     @endWebmaster
-    <a class="link-sidebar" href="#">
-        <i class="fas fa-sliders-h icone-sidebar"></i>
-        <span class="text-sidebar">Services</span>
-    </a>
     <a class="link-sidebar" href="{{route('logout')}}">
         <i class="fas fa-sign-out-alt icone-sidebar"></i>
         <span class="text-sidebar">Logout</span>

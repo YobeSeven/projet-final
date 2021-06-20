@@ -25,9 +25,6 @@
 		<div class="mt-3">
 			{{ $services->links('vendor/pagination/default') }}
 		</div>
-		<div class="text-center">
-			<a href="" class="site-btn">Salut</a>
-		</div>
 	</div>
 </div>
 <!-- services section end -->

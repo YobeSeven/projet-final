@@ -26,7 +26,7 @@
                     <!-- Post Author -->
                     <div class="author">
                         <div class="avatar">
-                            <img src="{{asset('img/avatar/' . $article->user->image)}}" alt="">
+                            <img src="{{asset('img/team/' . $article->user->image)}}" alt="">
                         </div>
                         <div class="author-info">
                             <h2>{{$article->user->name}} <span>Author</span></h2>
@@ -35,44 +35,34 @@
                     </div>
                     <!-- Post Comments -->
                     <div class="comments">
-                        <h2>Comments (2)</h2>
+                        <h2>Comments</h2>
                         <ul class="comment-list">
-                            <li>
-                                <div class="avatar">
-                                    <img src="{{asset('img/avatar/01.jpg')}}" alt="">
-                                </div>
-                                <div class="commetn-text">
-                                    <h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-                                    <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="avatar">
-                                    <img src="{{asset('img/avatar/02.jpg')}}" alt="">
-                                </div>
-                                <div class="commetn-text">
-                                    <h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-                                    <p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
-                                </div>
-                            </li>
+                            @foreach ($commentaires as $item)
+                                <li>
+                                    <div class="commetn-text">
+                                        <h3>{{$item->auteur}} / {{$item->email}}</h3>
+                                        <p>{{$item->message}}</p>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <!-- Commert Form -->
                     <div class="row">
                         <div class="col-md-9 comment-from">
                             <h2>Leave a comment</h2>
-                            <form class="form-class">
+                            <form action="{{route('commentaire.store' , $article->id)}}"  method="POST" class="form-class">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input type="text" name="name" placeholder="Your name">
+                                        <input type="text" name="auteur" id="auteur" placeholder="Your name">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="email" placeholder="Your email">
+                                        <input type="email" name="email" id="email" placeholder="Your email">
                                     </div>
                                     <div class="col-sm-12">
-                                        <input type="text" name="subject" placeholder="Subject">
-                                        <textarea name="message" placeholder="Message"></textarea>
-                                        <button class="site-btn">send</button>
+                                        <textarea name="message" id="message" placeholder="Message"></textarea>
+                                        <button class="site-btn">Envoyer</button>
                                     </div>
                                 </div>
                             </form>
