@@ -6,8 +6,14 @@
             <div class="col-md-8 col-md-offset-4">
                 <div class="section-title left">
                     @foreach ($homeTitres as $item)
-                        <h2>{{$item->titre_testimonial}}</h2>                        
-                    @endforeach
+                    <h2>
+                        @php
+                            $titre = str_replace('(', '<span>', $item->titre_testimonial);
+                            $titrebis = str_replace(')', '</span>', $titre);
+                            echo $titrebis;
+                        @endphp
+                    </h2>
+                @endforeach
                 </div>
                 <div class="owl-carousel" id="testimonial-slide">
                     @foreach ($testimonials as $item)

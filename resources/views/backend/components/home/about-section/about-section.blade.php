@@ -7,7 +7,6 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Titre</th>
                     <th>Premier texte</th>
                     <th>Deuxieme texte</th>
                     <th>Lien youtube</th>
@@ -18,7 +17,6 @@
                 @foreach ($aboutSections as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->titre_section}}</td>
                         <td>{{$item->texte_premier_section}}</td>
                         <td>{{$item->texte_deuxieme_section}}</td>
                         <td>{{$item->lien}}</td>

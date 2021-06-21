@@ -17,7 +17,6 @@ class AboutSectionController extends Controller
     public function update(AboutSection $id , Request $request){
         $this->authorize('admin');
         $request->validate([
-            "titre_section"             =>  ["string" , "max:255"],
             "texte_premier_section"     =>  ["string"],
             "texte_deuxieme_section"    =>  ["string"],
             "lien"                      =>  ["url"],
@@ -29,7 +28,6 @@ class AboutSectionController extends Controller
         $codeLien2 = Str::substr($verifLien, 17);
         if ($verifLien1 === "youtube") {
             $aboutSection->update([
-                "titre_section"             =>  $request->titre_section,
                 "texte_premier_section"     =>  $request->texte_premier_section,
                 "texte_deuxieme_section"    =>  $request->texte_deuxieme_section,
                 "lien"                      =>  $request->lien
@@ -38,7 +36,6 @@ class AboutSectionController extends Controller
         } elseif ($verifLien2 === "youtu.be") {
             $changeLien = "https://wwww.youtube.com/watch?v=" . $codeLien2 ;
             $aboutSection->update([
-                "titre_section"             =>  $request->titre_section,
                 "texte_premier_section"     =>  $request->texte_premier_section,
                 "texte_deuxieme_section"    =>  $request->texte_deuxieme_section,
                 "lien"                      =>  $changeLien,

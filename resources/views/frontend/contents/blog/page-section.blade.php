@@ -4,26 +4,28 @@
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">
                 @foreach ($lastArticles as $item)
-                <!-- Post item -->
-                <div class="post-item">
-                    <div class="post-thumbnail">
-                        <img src="{{asset('img/blog/' . $item->image)}}" alt="">
-                        <div class="post-date">
-                            <h2>03</h2>
-                            <h3>Nov 2017</h3>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">{{$item->titre}}</h2>
-                        <div class="post-meta">
-                            <a href="">{{$item->categorie->nom_categorie}}</a>
-                            <a href="">{{$item->tag->nom_tag}}</a>
-                            <a href="">2 Comments</a>
-                        </div>
-                        <p>{{$item->article}}</p>
-                        <a href="{{route('blog-post' , $item->id)}}" class="read-more">Read More</a>
-                    </div>
-                </div>
+                    @if ($item->trash === 0 && $item->validate === 1)
+                        <!-- Post item -->
+                        <div class="post-item">
+                            <div class="post-thumbnail">
+                                <img src="{{asset('img/blog/' . $item->image)}}" alt="">
+                                <div class="post-date">
+                                    <h2>03</h2>
+                                    <h3>Nov 2017</h3>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <h2 class="post-title">{{$item->titre}}</h2>
+                                <div class="post-meta">
+                                    <a href="">{{$item->categorie->nom_categorie}}</a>
+                                    <a href="">{{$item->tag->nom_tag}}</a>
+                                    <a href="">2 Comments</a>
+                                </div>
+                                <p>{{$item->article}}</p>
+                                <a href="{{route('blog-post' , $item->id)}}" class="read-more">Read More</a>
+                            </div>
+                        </div>                    
+                    @endif
                 @endforeach
                 <div class="mt-3">
                     {{ $articles->links('vendor/pagination/default') }}

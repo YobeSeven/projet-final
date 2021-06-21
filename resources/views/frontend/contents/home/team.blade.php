@@ -3,9 +3,15 @@
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="section-title">
-			@foreach ($homeTitres as $item)
-				<h2>{{$item->titre_team}}</h2>				
-			@endforeach
+            @foreach ($homeTitres as $item)
+                <h2>
+                    @php
+                        $titre = str_replace('(', '<span>', $item->titre_team);
+                        $titrebis = str_replace(')', '</span>', $titre);
+                        echo $titrebis;
+                    @endphp
+                </h2>
+            @endforeach
 		</div>
 		<div class="row">
 			@foreach ($teamRandom1s as $item)

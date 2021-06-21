@@ -4,7 +4,13 @@
     <div class="container">
         <div class="section-title">
             @foreach ($serviceTitres as $item)
-                <h2>{{$item->feature}}</h2>                
+                <h2>
+                    @php
+                        $titre = str_replace('(', '<span>', $item->feature);
+                        $titrebis = str_replace(')', '</span>', $titre);
+                        echo $titrebis;
+                    @endphp
+                </h2>
             @endforeach
         </div>
         <div class="row">

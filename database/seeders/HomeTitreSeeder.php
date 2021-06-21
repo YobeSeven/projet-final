@@ -16,6 +16,7 @@ class HomeTitreSeeder extends Seeder
     {
         DB::table('home_titres')->insert([
             [
+                "titre_section"     =>  "Get in the Lab and discover the world",
                 "titre_service"     =>  "Get in the Lab and see the services",
                 "titre_team"        =>  "Get in the Lab and meet the team",
                 "titre_testimonial" =>  "What our clients say",

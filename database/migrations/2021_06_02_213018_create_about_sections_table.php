@@ -15,7 +15,6 @@ class CreateAboutSectionsTable extends Migration
     {
         Schema::create('about_sections', function (Blueprint $table) {
             $table->id();
-            $table->text('titre_section');
             $table->text('texte_premier_section');
             $table->text('texte_deuxieme_section');
             $table->text('lien');

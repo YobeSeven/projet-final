@@ -28,6 +28,7 @@ class RegisterController extends Controller
             "poste_id"  => $request->poste_id,
             "role_id"   =>  4,
             "image"     => "profil_vide.jpg",
+            "validate"  =>  0,
             "email"     => $request->email,
             "password"  => Hash::make($request->password),
         ]);

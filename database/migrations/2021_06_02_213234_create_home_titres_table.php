@@ -15,6 +15,7 @@ class CreateHomeTitresTable extends Migration
     {
         Schema::create('home_titres', function (Blueprint $table) {
             $table->id();
+            $table->string('titre_section');
             $table->string('titre_service');
             $table->string('titre_team');
             $table->string('titre_testimonial');

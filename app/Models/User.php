@@ -21,6 +21,7 @@ class User extends Authenticatable
         'poste_id',
         'role_id',
         'image',
+        'validate',
         'texte',
         'email',
         'password',

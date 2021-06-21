@@ -12,10 +12,11 @@ class ValidateController extends Controller
 {
     public function index(){
         $users = User::all();
+        $userValidates = User::where('validate' , 0)->get();
         $articleValidates = Article::where('validate' , 0)->get();
         $articleDeletes = Article::where('trash' , 1)->get();
         $commentaireValidates = Commentaire::where('validate' , 0)->get();
-        return view('backend.components.validate' , compact('articleValidates' , 'articleDeletes' , 'users' , 'commentaireValidates'));
+        return view('backend.components.validate' , compact( 'userValidates' ,'articleValidates' , 'articleDeletes' , 'users' , 'commentaireValidates'));
     }
 
     public function validateArticle(Article $id){

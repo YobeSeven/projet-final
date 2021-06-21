@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AllTitleController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CommentaireController;
 use App\Http\Controllers\Admin\UserController;
@@ -59,6 +60,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/home/promotion',[HomeController::class , 'promotion'])->name('promotion.index');
         Route::get('/admin/home/{id}/promotion',[PromotionController::class , 'edit'])->name('promotion.edit');
 
+        Route::get('/admin/titre/all',[AllTitleController::class , 'index'])->name('all-title.index');
+        Route::get('/admin/home/{id}/titre',[AllTitleController::class , 'editTitreHome'])->name('editTitreHome.edit');
+        Route::get('/admin/service/{id}/titre',[AllTitleController::class , 'editTitreService'])->name('editTitreService.edit');
+
         Route::get('/admin/partial/subject',[SubjectController::class , 'index'])->name('subject.index');
         Route::get('/admin/partial/{id}/subject',[SubjectController::class , 'edit'])->name('subject.edit');
         Route::get('/admin/partial/subject/create',[SubjectController::class , 'create'])->name('subject.create');
@@ -103,6 +108,9 @@ Route::post('/store/newsletter',[NewsletterController::class , 'store'])->name('
     //! ADMIN CONTROLL
 Route::delete('/delete/{id}/user',[UserController::class , 'destroy'])->name('user.destroy');
 Route::put('/update/role/{id}/user',[UserController::class , 'updateRole'])->name('role.update');
+    //! Validate User
+Route::put('/update/validate/{id}/user',[UserController::class , 'validateUser'])->name('user.validateUser');
+Route::delete('/delete/validate/{id}/user',[UserController::class , 'nonValidateUser'])->name('user.nonValidateUser');
     //! PROFILE
 Route::put('/update/profile',[SettingProfileController::class , 'updateProfile'])->name('setting-profile.updateProfile');
 Route::put('/update/password',[SettingProfileController::class , 'updatePassword'])->name('setting-profile.updatePassword');
@@ -119,6 +127,9 @@ Route::put('/restore/delete/{id}/article',[ValidateController::class , 'restoreD
 Route::post('/poste/{id}/commentaire',[CommentaireController::class , 'store'])->name('commentaire.store');
 Route::put('/validate/{id}/commentaire',[CommentaireController::class , 'validateCommentaire'])->name('validateCommentaire.update');
 Route::delete('/validate/{id}/commentaire',[CommentaireController::class , 'nonValidateCommentaire'])->name('nonValidateCommentaire.destroy');
+    //! ALL TITRE
+Route::put('/all/{id}/title/home' , [AllTitleController::class , 'updateTitreHome'])->name('updateTitreHome.update');
+Route::put('/all/title/{id}/service',[AllTitleController::class , 'updateTitreService'])->name('updateTitreService.update');
     //! FOOTER COMPONENTS
 Route::put('update/{id}/footer',[FooterController::class , 'update'])->name('footer.update');
     //! SUBJECT COMPONENTS

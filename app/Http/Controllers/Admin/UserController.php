@@ -19,6 +19,20 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    //* Validate USER
+    public function validateUser(User $id){
+        $user = $id;
+        $user->validate = 1;
+        $user->save();
+        return redirect()->back()->with('success' , 'user validated');
+    }
+
+    public function nonValidateUser(User $id){
+        $user = $id;
+        $user->delete();
+        return redirect()->back()->with('success' , 'user non validated');
+    }
+
     //* UPDATE ROLE OF USER
     public function updateRole(User $id,Request $request){
         if ($request->has('roleForUpdate')) {

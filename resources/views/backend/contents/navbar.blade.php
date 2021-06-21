@@ -16,6 +16,10 @@
             <i class="fas fa-link icone-sidebar"></i>
             <span class="text-sidebar">Home Admin</span>
         </a>
+        <a class="link-sidebar" href="{{route('all-title.index')}}">
+            <i class="fas fa-stream icone-sidebar"></i>
+            <span class="text-sidebar">All title</span>
+        </a>
         <a class="link-sidebar" href="{{route('aboutSection.index')}}">
             <i class="fas fa-stream icone-sidebar"></i>
             <span class="text-sidebar">About Section</span>
@@ -42,15 +46,17 @@
         </a>    
     @endAdmin
     @Webmaster
+    <a class="link-sidebar" href="{{route('validate.index')}}">
+        <i class="fas fa-sliders-h icone-sidebar"></i>
+        <span class="text-sidebar">Validate</span>
+    </a>
+    @endWebmaster
+    @Redacteur
         <a class="link-sidebar" href="{{route('blog.index')}}">
             <i class="far fa-question-circle icone-sidebar"></i>
             <span class="text-sidebar">Blog</span>
         </a>    
-        <a class="link-sidebar" href="{{route('validate.index')}}">
-            <i class="fas fa-sliders-h icone-sidebar"></i>
-            <span class="text-sidebar">Validate</span>
-        </a>
-    @endWebmaster
+    @endRedacteur
     <a class="link-sidebar" href="{{route('logout')}}">
         <i class="fas fa-sign-out-alt icone-sidebar"></i>
         <span class="text-sidebar">Logout</span>

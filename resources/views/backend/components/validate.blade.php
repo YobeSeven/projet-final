@@ -1,6 +1,49 @@
 @extends('layouts.index-admin')
 @section('content-admin')
-    <p class="text-center">Confirmation des nouveaux inscrits</p>
+
+    <p class="text-center">Confirmation des validate user</p>
+    <table class="container text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>email</th>
+                <th>nom auteur</th>
+                <th>message</th>
+                <th>Accepter</th>
+                <th>refuser</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($userValidates as $item)
+                <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>{{$item->role->role_name}}</td>
+                        <td>{{$item->poste->poste_name}}</td>
+                        <td>
+                            <form action="{{route('user.validateUser' , $item->id)}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit">Accepter</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{route('user.nonValidateUser' , $item->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <hr>
+
+
+    <p class="text-center">Changement de role des membres</p>
     <table class="container text-center">
         <thead>
             <tr>
@@ -54,7 +97,7 @@
 
     <hr>
 
-    <p class="text-center">Changement des rôles</p>
+    <p class="text-center">Changement des rôles (ALL)</p>
     <table class="container text-center">
         <thead>
             <tr>
@@ -194,7 +237,7 @@
 
     <hr>
 
-    <p class="text-center">Confirmation des articles à poster</p>
+    <p class="text-center">Confirmation des commentaires à poster</p>
     <table class="container text-center">
         <thead>
             <tr>

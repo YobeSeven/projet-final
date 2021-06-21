@@ -26,10 +26,19 @@
     <!-- About contant -->
     <div class="about-contant">
         <div class="container">
+            
+            <div class="section-title">
+                @foreach ($homeTitres as $item)
+                    <h2>
+                        @php
+                            $titre = str_replace('(', '<span>', $item->titre_section);
+                            $titrebis = str_replace(')', '</span>', $titre);
+                            echo $titrebis;
+                        @endphp
+                    </h2>
+                @endforeach
+            </div>
             @foreach ($aboutSections as $item)
-                <div class="section-title">
-                    <h2>{{$item->titre_section}}</h2>
-                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <p>{{$item->texte_premier_section}}</p>

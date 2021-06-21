@@ -2,9 +2,15 @@
 <div class="services-section spad">
 	<div class="container">
 		<div class="section-title dark">
-			@foreach ($serviceTitres as $item)
-				<h2>{{$item->section}}</h2>				
-			@endforeach
+            @foreach ($serviceTitres as $item)
+                <h2>
+                    @php
+                        $titre = str_replace('(', '<span>', $item->section);
+                        $titrebis = str_replace(')', '</span>', $titre);
+                        echo $titrebis;
+                    @endphp
+                </h2>
+            @endforeach
 		</div>
 		<div class="row">
 			@foreach ($services as $item)

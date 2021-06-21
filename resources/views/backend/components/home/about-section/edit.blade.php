@@ -9,18 +9,6 @@
         @csrf
         @method('PUT')
         <div>
-            <label class="mt-2" for="titre_section">
-                Titre
-            </label>
-            <input id="titre_section" name="titre_section" type="text" value="{{$aboutSection->titre_section}}"
-            class="w-full px-4 py-2 mt-2 border rounded-md">
-            @error('titre_section')
-            <span class="text-red-400">
-                <strong>{{$message}}</strong>
-            </span>
-            @enderror
-        </div>
-        <div>
             <label class="mt-2" for="texte_premier_section">
                 Premier texte
             </label>
