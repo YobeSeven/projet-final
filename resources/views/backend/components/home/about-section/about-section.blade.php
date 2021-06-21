@@ -1,31 +1,33 @@
 @extends('layouts.index-admin')
 @section('content-admin')
-    <h1>TABLEAUX ABOUT SECTION</h1>
 
-    <section>
-        <table class="container text-center">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Premier texte</th>
-                    <th>Deuxieme texte</th>
-                    <th>Lien youtube</th>
-                    <th>Modifier</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($aboutSections as $item)
+    <div class="md:px-32 py-8 w-full">
+        <h2 class="text-center">About Section</h2>
+        <div class="shadow overflow-hidden rounded border-b border-gray-200">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-800 text-white">
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$item->texte_premier_section}}</td>
-                        <td>{{$item->texte_deuxieme_section}}</td>
-                        <td>{{$item->lien}}</td>
-                        <td>
-                            <a href="{{route('aboutSection.edit' , $item->id)}}">Modifier</a>
-                        </td>
-                    </tr>                    
-                @endforeach
-            </tbody>
-        </table>
-    </section>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">#</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Premier texte</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Deuxieme texte</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Lien Youtube</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">MODIFIER</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    @foreach ($aboutSections as $item)
+                        <tr>
+                            <td class="text-left py-3 px-4">{{$loop->iteration}}</td>
+                            <td class="text-left py-3 px-4">{{$item->texte_premier_section}}</td>
+                            <td class="text-left py-3 px-4">{{$item->texte_deuxieme_section}}</td>
+                            <td class="text-left py-3 px-4">{{$item->lien}}</td>
+                            <td class="text-left py-3 px-4">
+                                <a href="{{route('aboutSection.edit' , $item->id)}}">Modifier</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection
